@@ -4,7 +4,6 @@ import Home from './Home'
 import About from './About'
 import SkateParkList from './SkateParkList'
 
-
 const MainRouter = () => {
   return (
     <>

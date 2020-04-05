@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import SkatePark from './SkatePark'
 
-
 const StyledRegionContainer = styled.div`
   border-bottom: .25vw solid #ffd700;
 `
