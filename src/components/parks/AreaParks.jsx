@@ -8,14 +8,14 @@ const StyledRegionContainer = styled.div`
 
 const StyledParkContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-columns: 1fr 1fr; 
   border-radius: 5px;
   justify-items: center; 
 `
 
 const StyledRegionName = styled.h3`
   font-family: 'Dosis', sans-serif;
-  color: #b30000;
+  color: rgb(119, 33, 46);
   font-weight: 400; 
   font-size: 2.5vw; 
   text-align: left;

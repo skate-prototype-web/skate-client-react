@@ -6,7 +6,7 @@ import AreaParks from './parks/AreaParks'
 
 const StyledHomeTitle = styled.h1`
   font-weight: 400;
-  color: #b30000; 
+  color: rgb(119, 33, 46); 
   font-family: 'Dosis', sans-serif;
   margin-left: 3vw; 
   font-size: 3vw;
