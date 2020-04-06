@@ -1,43 +1,67 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const StyledImageContainer = styled.div`
-  border: solid white;
-  width: 20vw;
-  height: 12vw;
-  border-radius: 5px;
-  margin-right: auto; 
-  margin-left: auto;
-  margin-bottom: 2.5vw;
-  background-image: url(${props => props.featureImage});
-  background-size: cover; 
+const StyledParkContainer = styled.div`
+  width: 91%;
+  height: auto;
+  margin-bottom: 2vw;  
 `
 
-const StyledParkContainer = styled.div`
-  border-radius: 3px;
-  background: rgba(179,0,0,.9);
-  width: 90%;
-  height: auto;
-  margin-bottom: 2vw;
+const StyledImageContainer = styled.div`
+  position: relative;
+  border: .10vw solid rgba(119, 33, 46, .8);
+  width: 100%;
+  height: 24vw;
+  border-radius: 1px;
+  margin-right: auto; 
+  margin-left: auto;
+  background-image: url(${props => props.featureImage});
+  background-size: cover;
+  
+  &:hover {
+    border: .20vw solid #ffd700;
+    cursor: pointer; 
+  }
+`
+
+const StyledImageOverlay = styled.div` 
   z-index: 1;
-  border: .25vw solid #ffd700;     
+  height: 100%;  
+  &:hover {
+    background: rgba(255, 255, 255, .20) 
+  }
+`
+
+const StyledNameContainer = styled.div`
+  position: absolute;
+  bottom: 0; 
+  width: 100%;
+  background: rgb(119, 33, 46, 0.85);
 `
 
 const StyledParkName = styled.h3`
   font-family: 'Dosis', sans-serif; 
-  font-weight: 200; 
+  font-weight: 400; 
   color: white; 
-  font-size: 1.5vw; 
+  font-size: 2vw; 
   text-align: left;
-  margin-left: 1vw; 
+  z-index: 2;
+  margin-top: .25vw;
+  margin-bottom: .25vw;
+  margin-left: .25vw;  
 `
 
 const SkatePark = props => {
   const {name, featureImage, address, phone, website} = props;
   return (
     <StyledParkContainer>
-      <StyledParkName>{name}</StyledParkName>
-      <StyledImageContainer featureImage={featureImage}/>
+      <StyledImageContainer featureImage={featureImage}>
+        <StyledImageOverlay>
+          <StyledNameContainer>
+            <StyledParkName>{name}</StyledParkName>
+          </StyledNameContainer>
+        </StyledImageOverlay>
+      </StyledImageContainer>
     </StyledParkContainer>
   )
 }

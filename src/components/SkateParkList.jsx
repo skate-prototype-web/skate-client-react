@@ -6,7 +6,7 @@ import AreaParks from './parks/AreaParks'
 
 const StyledHomeTitle = styled.h1`
   font-weight: 400;
-  color: #b30000; 
+  color: rgb(119, 33, 46); 
   font-family: 'Dosis', sans-serif;
   margin-left: 3vw; 
   font-size: 3vw;
@@ -34,7 +34,7 @@ class SkateParkList extends Component {
 
   componentDidMount () {
     axios
-    .get('http://localhost:9000/skateparks/api/getparks')
+    .get('http://54.245.129.246:9000/skateparks/api/getparks')
     .then(({data}) => {
       let regions = {}
       const regionNames = {eastLA: 'East Los Angeles', metro: 'Metro Area', valley: 'The Valley', southLA: 'South Los Angeles', westLA: 'West Los Angeles', southBay: 'South Bay', undefined: 'Unassigned'}

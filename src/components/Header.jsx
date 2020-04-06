@@ -23,14 +23,14 @@ const StyledHeaderTitle = styled.h3`
   margin-left: 24%;  
   font-family: 'Osaka-Sans Serif';
   font-style: normal;
-  color: #b30000;  
+  color: rgb(119, 33, 46);  
 `
 
 const StyledNavContainer = styled.div`
   display: flex;
   align-items: center; 
   height: 5vw;
-  background: #b30000;
+  background: rgb(119, 33, 46);
   justify-content: flex-end; 
   border-bottom: .25vw solid #ffd700;   
 `
