@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import Header from './Header'
+import Header from '../Components/organisms/Header'
 import styled from 'styled-components'
-import AreaParks from './parks/AreaParks'
+import AreaParks from '../Components/parks/AreaParks'
 
 const StyledHomeTitle = styled.h1`
   font-weight: 400;

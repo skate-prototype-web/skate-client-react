@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from '@reach/router'
 import styled from 'styled-components'
-import GlobalFonts from '../fonts/fonts'
-import ensoCursiveRed from '../images/enso_cursive_red_nosub.png'
+import GlobalFonts from '../../fonts/fonts'
+import ensoCursiveRed from '../../images/enso_cursive_darkred_nosub.png'
 
 const StyledHeaderContainer = styled.div`
   display: flex;  

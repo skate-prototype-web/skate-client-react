@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components'
 import ensoPlainWhite from '../images/enso_plain_white.png'
-import Header from './Header'
+import Header from '../Components/organisms/Header'
 
 const rotate = keyframes `
   from {
@@ -20,8 +20,8 @@ const StyledImageContainer = styled.div`
   height: auto;  
   align-items: center; 
   justify-content: center;
-  background: linear-gradient(80deg, rgba(240,40,60, .7), rgba(255,0,0,0) 70%),
-  linear-gradient(70deg, rgba(30,40,70, .5), rgba(0,0,255,0) 60%);
+  background: linear-gradient(80deg, rgba(119,33,46, .7), rgba(255,0,0,.1) 70%),
+  linear-gradient(70deg, rgba(119,33,46, .5), rgba(0,0,255,.2) 60%);
   z-index: 1;  
 `
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Router } from '@reach/router'
-import Home from './Home'
-import About from './About'
-import SkateParkList from './SkateParkList'
+import Home from './Pages/Home'
+import About from './Pages/About'
+import SkateParkList from './Pages/SkateParkList'
 
 const MainRouter = () => {
   return (
