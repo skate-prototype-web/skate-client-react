@@ -30,7 +30,7 @@ const AreaParks = props => {
       <StyledParkContainer>
         {parks.map((park, index) => {
           return (
-            <SkatePark name={park.name} featureImage={park.images[0]} address={park.address} phone={park.phone} website={park.website} key={index}/>
+            <SkatePark id={park._id} name={park.name} featureImage={park.images[0]} address={park.address} phone={park.phone} website={park.website} key={index}/>
           )})}
       </StyledParkContainer>
     </StyledRegionContainer>

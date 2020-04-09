@@ -33,8 +33,9 @@ class SkateParkList extends Component {
   }
 
   componentDidMount () {
+    console.log ('hello from inside component did mount skateparklist')
     axios
-    .get('http://54.245.129.246:9000/skateparks/api/getparks')
+    .get('http://localhost:9000/skateparks/api/getparks')
     .then(({data}) => {
       let regions = {}
       const regionNames = {eastLA: 'East Los Angeles', metro: 'Metro Area', valley: 'The Valley', southLA: 'South Los Angeles', westLA: 'West Los Angeles', southBay: 'South Bay', undefined: 'Unassigned'}
@@ -45,25 +46,31 @@ class SkateParkList extends Component {
           regions[park.region].parks.push(park)
         }
       })
-      this.setState(regions)
+      let regionsInState = []
+      for (let key in regions) {
+        regionsInState.push(regions[key])
+      }
+      this.setState({skateParks: regionsInState})
     })
     .catch (error => console.log('error', error))
   }
 
-render() { 
-  let regionMap = []
-  Object.keys(this.state).map(region => regionMap.push(region))
+render() {
+  const { skateParks} = this.state
+    console.log(this.state, 'this state')
     return (
       <>
         <Header/>
-        <StyledHomeTitle>Los Angeles Area Parks</StyledHomeTitle> 
-        <StyledParksContainer>
-          {regionMap.map((region, index) => {
-              return (
-                <AreaParks region={this.state[region].name} parks={this.state[region].parks} key={index}/>
-              )
-          })}
-        </StyledParksContainer>
+        <StyledHomeTitle>Los Angeles Area Parks</StyledHomeTitle>
+        {skateParks !== undefined && (
+          <StyledParksContainer>
+            {skateParks.map((region, index) => {
+                return (
+                  <AreaParks region={region.name} parks={region.parks} key={index}/>
+                )
+            })}
+          </StyledParksContainer>
+        )}
       </>
     );
   }
