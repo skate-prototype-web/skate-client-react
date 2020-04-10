@@ -3,24 +3,17 @@ import { Router } from '@reach/router'
 import SkateParkList from './SkateParkList'
 import SkateParkPage from './SkateParkPage'
 
-
-class SkateParks extends Component {
-  constructor () {
-    super ()
-    this.state = {
-
-    }
-  }
-  render () {
-    console.log ('hi from SkateParks')
-    return (
-      <>
-        <Router>
-          <SkateParkList path="/skateparks"/>
-        </Router>
-      </>
-    )
-  }
+const SkateParks = props => {
+  console.log (props, 'this is new props')
+  const { skateParks, skateParksRaw } = props
+  return (
+    <>
+      <Router>
+        <SkateParkList path="/" skateParks={skateParks} />
+        <SkateParkPage path=":id" skateParksRaw={skateParksRaw}/>
+      </Router>
+    </>
+  )
 }
 
 export default SkateParks
