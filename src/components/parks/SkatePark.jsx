@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { navigate } from '@reach/router'
+import { Link } from '@reach/router'
 
 const StyledParkContainer = styled.div`
   width: 91%;
@@ -53,16 +54,18 @@ const StyledParkName = styled.h3`
 `
 
 const SkatePark = props => {
-  const {name, featureImage, address, phone, website} = props;
+  const {name, featureImage, address, phone, website, id} = props;
   return (
     <StyledParkContainer>
-      <StyledImageContainer featureImage={featureImage} onClick={()=> navigate(`/skateparks/:${props.id}`)}>
-        <StyledImageOverlay>
-          <StyledNameContainer>
-            <StyledParkName>{name}</StyledParkName>
-          </StyledNameContainer>
-        </StyledImageOverlay>
-      </StyledImageContainer>
+      <Link to={`/skateparks/${id}`}>
+        <StyledImageContainer featureImage={featureImage}>
+          <StyledImageOverlay>
+            <StyledNameContainer>
+              <StyledParkName>{name}</StyledParkName>
+            </StyledNameContainer>
+          </StyledImageOverlay>
+        </StyledImageContainer>
+      </Link>
     </StyledParkContainer>
   )
 }

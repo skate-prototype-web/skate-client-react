@@ -25,55 +25,24 @@ const StyledParksContainer = styled.div`
   text-align: center; 
 `
 
-class SkateParkList extends Component {
-  constructor () {
-    super ()
-    this.state = {
-    }
-  }
-
-  componentDidMount () {
-    console.log ('hello from inside component did mount skateparklist')
-    axios
-    .get('http://localhost:9000/skateparks/api/getparks')
-    .then(({data}) => {
-      let regions = {}
-      const regionNames = {eastLA: 'East Los Angeles', metro: 'Metro Area', valley: 'The Valley', southLA: 'South Los Angeles', westLA: 'West Los Angeles', southBay: 'South Bay', undefined: 'Unassigned'}
-      data.map(park => {
-        if (!regions[park.region]) {
-          regions[park.region] = {name: regionNames[park.region], parks:[park]}
-        } else {
-          regions[park.region].parks.push(park)
-        }
-      })
-      let regionsInState = []
-      for (let key in regions) {
-        regionsInState.push(regions[key])
-      }
-      this.setState({skateParks: regionsInState})
-    })
-    .catch (error => console.log('error', error))
-  }
-
-render() {
-  const { skateParks} = this.state
-    console.log(this.state, 'this state')
-    return (
-      <>
-        <Header/>
-        <StyledHomeTitle>Los Angeles Area Parks</StyledHomeTitle>
-        {skateParks !== undefined && (
-          <StyledParksContainer>
-            {skateParks.map((region, index) => {
-                return (
-                  <AreaParks region={region.name} parks={region.parks} key={index}/>
-                )
-            })}
-          </StyledParksContainer>
-        )}
-      </>
-    );
-  }
+const SkateParkList = props => {
+  const { skateParks} = props
+  console.log (props, 'props in list')
+  return (
+    <>
+      <Header/>
+      <StyledHomeTitle>Los Angeles Area Parks</StyledHomeTitle>
+      {skateParks !== undefined && (
+        <StyledParksContainer>
+          {skateParks.map((region, index) => {
+              return (
+                <AreaParks region={region.name} parks={region.parks} key={index}/>
+              )
+          })}
+        </StyledParksContainer>
+      )}
+    </>
+  )
 }
 
 export default SkateParkList

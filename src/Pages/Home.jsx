@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import styled, { keyframes } from 'styled-components'
 import ensoPlainWhite from '../images/enso_plain_white.png'
 import Header from '../Components/organisms/Header'
@@ -37,7 +36,7 @@ const StyledEnsoWhite = styled.img `
   z-index: 5; 
   width: 42vw;
   position: absolute;
-  animation: ${rotate} 4s linear infinite; 
+  animation: ${rotate} 10s linear infinite; 
 `
 
 const StyledText = styled.div`
