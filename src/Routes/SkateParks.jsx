@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Router } from '@reach/router'
-import SkateParkList from './SkateParkList'
-import SkateParkPage from './SkateParkPage'
+import SkateParkList from '../Pages/SkateParkList'
+import SkateParkPage from '../Pages/SkateParkPage'
 
 const SkateParks = props => {
-  console.log (props, 'this is new props')
   const { skateParks, skateParksRaw } = props
   return (
     <>

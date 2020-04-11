@@ -7,7 +7,6 @@ import ensoCursiveRed from '../../images/enso_cursive_darkred_nosub.png'
 const StyledHeaderContainer = styled.div`
   display: flex;  
   flex-direction: row;
-  border-bottom: .25vw solid #ffd700;
   padding: 1vw;
   align-items: center;
 `
@@ -27,11 +26,16 @@ const StyledHeaderTitle = styled.h3`
 `
 
 const StyledNavContainer = styled.div`
+  top: 0;
+  z-index: 50; 
+  position: -webkit-sticky;
+  position: sticky;
   display: flex;
   align-items: center; 
   height: 5vw;
   background: rgb(119, 33, 46);
-  justify-content: flex-end; 
+  justify-content: flex-end;
+  border-top: .25vw solid #ffd700; 
   border-bottom: .25vw solid #ffd700;   
 `
 
