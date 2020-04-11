@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 import Header from '../Components/organisms/Header'
 import styled from 'styled-components'
-import AreaParks from '../Components/parks/AreaParks'
+import AreaParks from '../Components/organisms/parks/AreaParks'
 
 const StyledHomeTitle = styled.h1`
   font-weight: 400;
@@ -27,7 +26,6 @@ const StyledParksContainer = styled.div`
 
 const SkateParkList = props => {
   const { skateParks} = props
-  console.log (props, 'props in list')
   return (
     <>
       <Header/>

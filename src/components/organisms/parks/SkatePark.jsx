@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-import { navigate } from '@reach/router'
 import { Link } from '@reach/router'
 
 const StyledParkContainer = styled.div`

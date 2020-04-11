@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Router } from '@reach/router'
 import axios from 'axios'
-import Home from './Pages/Home'
-import About from './Pages/About'
-import SkateParkList from './Pages/SkateParkList'
-import SkateParkPage from './Pages/SkateParkPage'
-import SkateParks from './Pages/SkateParks'
+import Home from '../Pages/Home'
+import About from '../Pages/About'
+import SkateParkList from '../Pages/SkateParkList'
+import SkateParkPage from '../Pages/SkateParkPage'
+import SkateParks from './SkateParks'
+import regionNames from '../regionNames'
 
 class MainRouter extends Component {
   constructor () {
@@ -17,10 +18,9 @@ class MainRouter extends Component {
 
  componentDidMount () {
     axios
-    .get('http://localhost:9000/skateparks/api/getparks')
+    .get('http://localhost:9000/skateparks/api/parks')
     .then(({data}) => {
       let regions = {}
-      const regionNames = {eastLA: 'East Los Angeles', metro: 'Metro Area', valley: 'The Valley', southLA: 'South Los Angeles', westLA: 'West Los Angeles', southBay: 'South Bay', undefined: 'Unassigned'}
       data.map(park => {
         if (!regions[park.region]) {
           regions[park.region] = {name: regionNames[park.region], parks:[park]}
@@ -39,7 +39,6 @@ class MainRouter extends Component {
 
 
   render () {
-    console.log (this.state)
     const { skateParksMapped, skateParksRaw } = this.state 
     return (
       <>
@@ -47,7 +46,7 @@ class MainRouter extends Component {
           <Home path="/"/>
           <About path="/about"/>
           <SkateParks path="skateparks" skateParks={skateParksMapped} skateParksRaw={skateParksRaw}>
-            <SkateParkPage path="/:id"/>
+            <SkateParkPage path="/:id" skateParksRaw={skateParksRaw}/>
           </SkateParks>
         </Router>
       </>
