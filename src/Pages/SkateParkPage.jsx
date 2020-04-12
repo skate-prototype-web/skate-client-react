@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Header from '../Components/organisms/Header'
+import SkateSlider from '../Components/molecules/SkateSlider'
 import styled from 'styled-components'
 import regionNames from '../regionNames'
+
 
 const ParkName = styled.h1 `
   font-weight: 600;
@@ -52,7 +54,7 @@ const WebLink = styled.a`
 const MainContainer = styled.div`
   border: solid green;
   width: 100%; 
-  height: 600px;
+  height: auto;
   display: grid;
   grid-template-columns: 8fr 4fr;
   
@@ -73,8 +75,9 @@ const MainImageContainer = styled.div`
 
 const MainParkImage = styled.img`
   border: solid black; 
-  width: 100%;
-  height: auto; 
+  width: 70vw;
+  height: 45vw;
+  object-fit: contain; 
 `
 
 const SliderContainer = styled.div`
@@ -93,6 +96,7 @@ class SkateParkPage extends Component {
       skateParks: props.skateParksRaw
     }
   }
+
   componentDidMount(){
     console.log (this.state)
     const { skateParks, id } = this.state
@@ -126,6 +130,7 @@ class SkateParkPage extends Component {
               <MainImageContainer>
                 <MainParkImage src={featuredPark.images[0]}/>
               </MainImageContainer>
+              <SkateSlider parkImages={featuredPark.images}/>
               <SliderContainer/>
             </ImagesContainer>
             <DetailsContainer>

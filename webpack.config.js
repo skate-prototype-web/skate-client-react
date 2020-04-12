@@ -21,6 +21,10 @@ module.exports = {
           test: /\.(png|woff|woff2|eot|ttf|svg|jpg|gif)$/,
           use: ['file-loader'],
         },
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        }
       ]
     },
     resolve: {
