@@ -81,6 +81,8 @@ const MainParkImage = styled.img`
 `
 
 const SliderContainer = styled.div`
+  width: 70vw;
+  height: 25vw; 
   border: solid purple;
 `
 
