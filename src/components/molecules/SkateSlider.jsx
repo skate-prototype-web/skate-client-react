@@ -14,6 +14,26 @@ const ParkImageContainer = styled.div`
   border: solid blue; 
 `
 
+const TestDiv = styled.div`
+
+`
+
+const TestHeading = styled.h3`
+  background: #5f9ea0;
+  color: #fff;
+  font-size: 36px;
+  line-height: 100px;
+  margin: 10px;
+  padding: 2%;
+  position: relative;
+  text-align: center;
+`
+
+const TestContainer = styled.div `
+  margin: 0 auto;
+  padding: 0px 40px 40px 40px;
+  width: 400px;
+`
 
 const SkateSlider = props => {
   const sliderSettings = {
@@ -27,18 +47,20 @@ const SkateSlider = props => {
   let slider
   const { parkImages } = props
   return (
-    <Slider 
-    ref={c => {
-      slider = c
-    }}
-    {...sliderSettings}
-    >
-      {parkImages.map(image => (
-        <ParkImageContainer>
-          <ParkImage src={image}/>
-        </ParkImageContainer>
-      ))}
-    </Slider>
+    <TestContainer>
+      <Slider 
+      ref={c => {
+        slider = c
+      }}
+      {...sliderSettings}
+      >
+        {parkImages.map(image => (
+          <ParkImageContainer>
+            <ParkImage src={image}/>
+          </ParkImageContainer>
+        ))}
+      </Slider>
+    </TestContainer>
   )
 }
 
