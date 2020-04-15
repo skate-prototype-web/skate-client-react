@@ -1,66 +1,131 @@
-import React from 'react'
-import styled from  'styled-components'
+import React,{ useState} from 'react'
+import styled from 'styled-components'
 import Slider from 'react-slick'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
 const ParkImage = styled.img`
-  height: 15vw;
-  width: 15vw;
-  object-fit: contain; 
+  height: 10vw;
+  width: 12vw;
+  object-fit: cover ;
+  margin: auto;
+  border-radius: 10px;
+  border: solid rgb(119, 33, 46);  
 `
 
-const ParkImageContainer = styled.div`
-  border: solid blue; 
+const InnerImageContainer = styled.div `
+  border: 3px solid #ffd700;
+  background: #ffd700;
+  width: 12.5vw;
+  border-radius: 11px; 
+  margin: auto;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+`
+const OuterImageContainer = styled.div`
+  display: flex;   
+  align-items: center;
+  justify-content: center;
 `
 
-const TestDiv = styled.div`
+const SliderContainer = styled.div `
+  width: 70vw;
+`
+
+const RightArrowContainer = styled.div` 
+  font-size: 2vw;
+  display: flex; 
+  align-items: center;
+  justify-content: center;  
+`
+
+const LeftArrowContainer = styled.div`
+  font-size: 2vw;
+  justify-content: center; 
+  align-items: center; 
+  display: flex; 
 
 `
 
-const TestHeading = styled.h3`
-  background: #5f9ea0;
-  color: #fff;
-  font-size: 36px;
-  line-height: 100px;
-  margin: 10px;
-  padding: 2%;
-  position: relative;
-  text-align: center;
-`
+const SliderRightArrow = props => {
+  const { onClick, displayRight } = props
+  return (
+    <RightArrowContainer>
+      {displayRight === true && (
+      <FontAwesomeIcon
+        icon={faChevronRight} 
+        size="lg" 
+        color="rgb(119, 33, 46)"
+        onClick={onClick} 
+      />
+      )}
+    </RightArrowContainer>
+  )
+}
 
-const TestContainer = styled.div `
-  margin: 0 auto;
-  padding: 0px 40px 40px 40px;
-  width: 400px;
-`
+const SliderLeftArrow = props => {
+  console.log (props, 'props in left')
+  const { onClick, displayLeft } = props
+  return (
+    <LeftArrowContainer>
+      {displayLeft === true && (
+        <FontAwesomeIcon
+        icon={faChevronLeft} 
+        size="lg" 
+        color="rgb(119, 33, 46)"
+        onClick={onClick} 
+        />
+      )}
+    </LeftArrowContainer>
+  )
+}
 
 const SkateSlider = props => {
+
+  const { parkImages, changeImage } = props
+
+  const [displayRight, setDisplayRight] = useState(true)
+  const [displayLeft, setDisplayLeft] = useState(false)
+
+  const setArrowDisplay = index => {
+    const getLength = parkImages.length
+    setDisplayLeft(index !== 0)
+    setDisplayRight(getLength - index > 3)
+  }
+
   const sliderSettings = {
     dots: false, 
     infinite: false, 
-    speed: 400,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    arrows: true
+    speed: 600,
+    centerMode: false,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    nextArrow: <SliderRightArrow displayRight={displayRight} />,
+    prevArrow: <SliderLeftArrow displayLeft={displayLeft} />,
+    afterChange: index => setArrowDisplay(index)
   }
-  let slider
-  const { parkImages } = props
+
   return (
-    <TestContainer>
-      <Slider 
-      ref={c => {
-        slider = c
-      }}
-      {...sliderSettings}
-      >
-        {parkImages.map(image => (
-          <ParkImageContainer>
-            <ParkImage src={image}/>
-          </ParkImageContainer>
-        ))}
-      </Slider>
-    </TestContainer>
+    <SliderContainer>
+    <Slider style={{display: "grid", gridTemplateColumns: ".5fr 11fr .5fr"}}
+    {...sliderSettings}
+    >
+      {parkImages.map((image, index) => (
+      <OuterImageContainer>
+        <InnerImageContainer>
+        <ParkImage 
+          src={image}
+          onClick={() => changeImage(index)}
+          key={index}
+        />
+        </InnerImageContainer>
+      </OuterImageContainer>
+      ))}
+    </Slider>
+    </SliderContainer>
   )
 }
 
