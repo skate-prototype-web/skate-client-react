@@ -9,15 +9,19 @@ import "slick-carousel/slick/slick-theme.css"
 const ParkImage = styled.img`
   height: 10vw;
   width: 12vw;
-  object-fit: cover ;
+  object-fit: cover;
   margin: auto;
   border-radius: 10px;
-  border: solid rgb(119, 33, 46);  
+  border: solid rgb(119, 33, 46);
+  
+  &:hover {
+    cursor: pointer; 
+  }
 `
 
 const InnerImageContainer = styled.div `
-  border: 3px solid #ffd700;
-  background: #ffd700;
+  background: ${props => (props.mainIndex === props.index) ? '#ffd700' : 'white'};
+  border: 2px solid ${props => (props.mainIndex === props.index) ? '#ffd700' : 'white'};
   width: 12.5vw;
   border-radius: 11px; 
   margin: auto;
@@ -84,9 +88,8 @@ const SliderLeftArrow = props => {
 }
 
 const SkateSlider = props => {
-
-  const { parkImages, changeImage } = props
-
+  const { parkImages, changeImage, mainIndex } = props
+  console.log (mainIndex, 'mainIndex')
   const [displayRight, setDisplayRight] = useState(true)
   const [displayLeft, setDisplayLeft] = useState(false)
 
@@ -115,12 +118,14 @@ const SkateSlider = props => {
     >
       {parkImages.map((image, index) => (
       <OuterImageContainer>
-        <InnerImageContainer>
-        <ParkImage 
-          src={image}
-          onClick={() => changeImage(index)}
-          key={index}
-        />
+        <InnerImageContainer mainIndex={mainIndex} index={index}>
+          <ParkImage 
+            src={image}
+            onClick={() => changeImage(index)}
+            key={index}
+            mainIndex={mainIndex}
+            index={index}
+          />  
         </InnerImageContainer>
       </OuterImageContainer>
       ))}
