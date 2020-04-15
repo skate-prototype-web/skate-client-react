@@ -45,7 +45,7 @@ const WebLink = styled.a`
   font-size: 1.75vw;
 
   &:hover{
-    pointer: cursor; 
+    cursor: pointer; 
     color: rgb(119, 33, 46);
     font-weight: 700; 
   }
@@ -110,7 +110,6 @@ class SkateParkPage extends Component {
       axios 
       .get(`http://localhost:9000/skateparks/api/parks/${id}`)
       .then(({data}) => {
-        console.log (data)
         this.setState({featuredPark: data,
                       id,
                       mainImage: data.images[0],
@@ -148,7 +147,7 @@ class SkateParkPage extends Component {
 
   changeImage = (index) => {
     const { images } = this.state
-    this.setState({mainImage: images[index], mainIndex: 0})
+    this.setState({mainImage: images[index], mainIndex: index})
   }
   
   render () {
@@ -167,7 +166,7 @@ class SkateParkPage extends Component {
                 <MainParkImage src={mainImage}/>
               </MainImageContainer>
               <OuterSliderContainer>
-                <SkateSlider parkImages={images} changeImage={this.changeImage}/>
+                <SkateSlider parkImages={images} changeImage={this.changeImage} mainIndex={mainIndex}/>
               </OuterSliderContainer>
             </ImagesContainer>
             <DetailsContainer>
