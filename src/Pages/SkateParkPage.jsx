@@ -66,9 +66,10 @@ const MainContainer = styled.div`
 
 const ImagesContainer = styled.div`
   display: grid;
-  grid-template-rows: 9fr 3fr;
+  grid-template-rows: 7fr 5 fr;
   border: solid red; 
 `
+
 const MainImageContainer = styled.div`
   border: solid blue; 
 `
@@ -80,10 +81,13 @@ const MainParkImage = styled.img`
   object-fit: contain; 
 `
 
-const SliderContainer = styled.div`
+const OuterSliderContainer = styled.div`
   width: 70vw;
-  height: 25vw; 
+  height: 15vw; 
   border: solid purple;
+  display: flex; 
+  justify-content: center;
+  align-items: center;  
 `
 
 const DetailsContainer = styled.div`
@@ -99,8 +103,7 @@ class SkateParkPage extends Component {
     }
   }
 
-  componentDidMount(){
-    console.log (this.state)
+  componentDidMount = () => {
     const { skateParks, id } = this.state
     let featuredPark
     if (skateParks === undefined) {
@@ -108,18 +111,49 @@ class SkateParkPage extends Component {
       .get(`http://localhost:9000/skateparks/api/parks/${id}`)
       .then(({data}) => {
         console.log (data)
-        this.setState({featuredPark: data, id, mainImage: data.images[0]})
+        this.setState({featuredPark: data,
+                      id,
+                      mainImage: data.images[0],
+                      images: data.images,
+                      address: data.address, 
+                      reviews: data.reviews, 
+                      region: data.region, 
+                      phone: data.phone, 
+                      rating: data.rating, 
+                      latitude: data.latitude, 
+                      longitude: data.longitude,
+                      website: data.website,
+                      mainIndex: 0,
+                    })
       })
       .catch (error => console.log (`This is the error: ${error}`))
     } else {
       featuredPark = skateParks.find(park => park._id === id)
-      this.setState({featuredPark, id, mainImage: featuredPark.images[0]})
+      this.setState({featuredPark,
+                      id, 
+                      mainImage: featuredPark.images[0],
+                      images: featuredPark.images,
+                      address: featuredPark.address,
+                      reviews: featuredPark.reviews,
+                      region: featuredPark.region,
+                      phone: featuredPark.phone,
+                      rating: featuredPark.rating,
+                      latitude: featuredPark.latitude, 
+                      longitude: featuredPark.longitude,
+                      website: featuredPark.website,
+                      mainIndex: 0,
+                    })
     }
+  }
+
+  changeImage = (index) => {
+    const { images } = this.state
+    this.setState({mainImage: images[index], mainIndex: 0})
   }
   
   render () {
     console.log (this.state, 'state in park page')
-    const { featuredPark, id, mainImage } = this.state
+    const { featuredPark, id, images, mainImage, address, phone, region, website, mainIndex } = this.state
     return (
       <>
         <Header/>
@@ -130,20 +164,21 @@ class SkateParkPage extends Component {
           <MainContainer>
             <ImagesContainer>
               <MainImageContainer>
-                <MainParkImage src={featuredPark.images[0]}/>
+                <MainParkImage src={mainImage}/>
               </MainImageContainer>
-              <SkateSlider parkImages={featuredPark.images}/>
-              <SliderContainer/>
+              <OuterSliderContainer>
+                <SkateSlider parkImages={images} changeImage={this.changeImage}/>
+              </OuterSliderContainer>
             </ImagesContainer>
             <DetailsContainer>
               <DetailTitle>Region</DetailTitle>
-              <Details>{regionNames[featuredPark.region]}</Details>
+              <Details>{regionNames[region]}</Details>
               <DetailTitle>Address</DetailTitle>
-              <Details>{featuredPark.address.street}</Details>
-              <Details>{featuredPark.address.city}, {featuredPark.address.state} {featuredPark.address.zip}</Details>
+              <Details>{address.street}</Details>
+              <Details>{address.city}, {address.state} {address.zip}</Details>
               <DetailTitle>Phone</DetailTitle>
-              <Details>{featuredPark.phone}</Details>
-              <WebLink href={featuredPark.website}>website</WebLink>
+              <Details>{phone}</Details>
+              <WebLink href={website}>website</WebLink>
             </DetailsContainer>
           </MainContainer>
         )}
