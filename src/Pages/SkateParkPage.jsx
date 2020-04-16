@@ -21,17 +21,17 @@ const DetailTitle = styled.h4 `
   margin-left: 1vw; 
   margin-top: 1vw; 
   margin-bottom: .25vw; 
-  color: rgb(119, 33, 46); 
+  color: #ffd700; 
 `
 
 const Details = styled.p`
   font-weight: 300; 
   font-family: 'Dosis', sans-serif; 
-  font-size: 2; 
+  font-size: 2vw; 
   margin-left: 1.5vw; 
   margin-top: .25vw; 
   margin-bottom: .25vw; 
-  color: black; 
+  color: white; 
 `
 
 const WebLink = styled.a`
@@ -40,7 +40,7 @@ const WebLink = styled.a`
   margin-left: 1.25vw; 
   margin-top: 1.5vw; 
   margin-bottom: 1vw; 
-  color: black;
+  color: white;
   font-weight: 500; 
   font-size: 1.75vw;
 
@@ -52,7 +52,6 @@ const WebLink = styled.a`
 `
 
 const MainContainer = styled.div`
-  border: solid green;
   width: 100%; 
   height: auto;
   display: grid;
@@ -67,31 +66,36 @@ const MainContainer = styled.div`
 const ImagesContainer = styled.div`
   display: grid;
   grid-template-rows: 7fr 5 fr;
-  border: solid red; 
+  justify-content: center; 
 `
 
 const MainImageContainer = styled.div`
-  border: solid blue; 
+ 
 `
 
-const MainParkImage = styled.img`
-  border: solid black; 
+const MainParkImage = styled.img` 
   width: 70vw;
   height: 45vw;
   object-fit: contain; 
 `
 
 const OuterSliderContainer = styled.div`
-  width: 70vw;
+  width: 100%;
   height: 15vw; 
-  border: solid purple;
   display: flex; 
   justify-content: center;
   align-items: center;  
 `
 
 const DetailsContainer = styled.div`
-  border: solid orange; 
+  background: rgba(119, 33, 46, .7);
+  display: flex; 
+  flex-direction: column;
+  
+  @media (max-width: 900px) {
+   flex-direction: row;  
+  }
+  
 `
 
 class SkateParkPage extends Component {
@@ -170,14 +174,22 @@ class SkateParkPage extends Component {
               </OuterSliderContainer>
             </ImagesContainer>
             <DetailsContainer>
-              <DetailTitle>Region</DetailTitle>
-              <Details>{regionNames[region]}</Details>
-              <DetailTitle>Address</DetailTitle>
-              <Details>{address.street}</Details>
-              <Details>{address.city}, {address.state} {address.zip}</Details>
-              <DetailTitle>Phone</DetailTitle>
-              <Details>{phone}</Details>
-              <WebLink href={website}>website</WebLink>
+              <div>
+                <DetailTitle>Region</DetailTitle>
+                <Details>{regionNames[region]}</Details>
+              </div>
+              <div>
+                <DetailTitle>Address</DetailTitle>
+                <Details>{address.street}</Details>
+                <Details>{address.city}, {address.state} {address.zip}</Details>
+              </div>
+              <div>
+                <DetailTitle>Phone</DetailTitle>
+                <Details>{phone}</Details>
+              </div>
+              <div>
+                <WebLink href={website}>website</WebLink>
+              </div>
             </DetailsContainer>
           </MainContainer>
         )}

@@ -43,15 +43,14 @@ const RightArrowContainer = styled.div`
   font-size: 2vw;
   display: flex; 
   align-items: center;
-  justify-content: center;  
+  justify-content: flex-start;   
 `
 
 const LeftArrowContainer = styled.div`
   font-size: 2vw;
-  justify-content: center; 
+  justify-content: flex-end; 
   align-items: center; 
-  display: flex; 
-
+  display: flex;
 `
 
 const SliderRightArrow = props => {
