@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack')
 
 module.exports = {
   entry: path.resolve(__dirname, './src/index.jsx'),
@@ -30,5 +31,8 @@ module.exports = {
     resolve: {
       extensions: ['.js', '.jsx']
     },
+  plugins: [
+    new webpack.EnvironmentPlugin(['MAP_API'])
+  ],
   watch: true,
 };

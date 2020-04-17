@@ -70,7 +70,7 @@ const ImagesContainer = styled.div`
 `
 
 const MainImageContainer = styled.div`
- 
+
 `
 
 const MainParkImage = styled.img` 
@@ -93,7 +93,7 @@ const DetailsContainer = styled.div`
   flex-direction: column;
   
   @media (max-width: 900px) {
-   flex-direction: row;  
+    flex-direction: row;  
   }
   
 `
