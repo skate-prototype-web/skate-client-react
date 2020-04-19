@@ -28,11 +28,13 @@ class MainRouter extends Component {
           regions[park.region].parks.push(park)
         }
       })
+      let raw = data.filter(park => parseFloat(park.geolat) > 1)
+      console.log(raw, 'raw')
       let regionsInState = []
       for (let key in regions) {
         regionsInState.push(regions[key])
       }
-      this.setState({skateParksMapped: regionsInState, skateParksRaw: data, loaded: true})
+      this.setState({skateParksMapped: regionsInState, skateParksRaw: raw, loaded: true})
     })
     .catch (error => console.log('error', error))
   }

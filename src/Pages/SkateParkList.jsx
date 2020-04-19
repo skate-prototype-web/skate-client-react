@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import Header from '../Components/organisms/Header'
+import MapMain from '../Components/molecules/MapMain'
 import styled from 'styled-components'
 import AreaParks from '../Components/organisms/parks/AreaParks'
+
 
 const StyledHomeTitle = styled.h1`
   font-weight: 400;
@@ -25,13 +27,14 @@ const StyledParksContainer = styled.div`
 `
 
 const SkateParkList = props => {
-  const { skateParks} = props
+  const { skateParks, skateParksRaw} = props
   return (
     <>
       <Header/>
       <StyledHomeTitle>Los Angeles Area Parks</StyledHomeTitle>
-      {skateParks !== undefined && (
+      {skateParks && (
         <StyledParksContainer>
+          <MapMain skateParks={skateParksRaw} />
           {skateParks.map((region, index) => {
               return (
                 <AreaParks region={region.name} parks={region.parks} key={index}/>

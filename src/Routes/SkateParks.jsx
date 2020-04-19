@@ -8,7 +8,7 @@ const SkateParks = props => {
   return (
     <>
       <Router>
-        <SkateParkList path="/" skateParks={skateParks} />
+        <SkateParkList path="/" skateParks={skateParks} skateParksRaw={skateParksRaw}/>
         <SkateParkPage path=":id" skateParksRaw={skateParksRaw}/>
       </Router>
     </>
