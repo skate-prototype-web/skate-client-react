@@ -4,6 +4,7 @@ import Header from '../Components/organisms/Header'
 import SkateSlider from '../Components/molecules/SkateSlider'
 import styled from 'styled-components'
 import regionNames from '../regionNames'
+import MapPark from '../Components/molecules/MapPark'
 
 
 const ParkName = styled.h1 `
@@ -31,7 +32,10 @@ const Details = styled.p`
   margin-left: 1.5vw; 
   margin-top: .25vw; 
   margin-bottom: .25vw; 
-  color: white; 
+  color: white;
+  @media (max-width: 900px) {
+    margin-right: 5vw; 
+  } 
 `
 
 const WebLink = styled.a`
@@ -91,11 +95,14 @@ const DetailsContainer = styled.div`
   background: rgba(119, 33, 46, .7);
   display: flex; 
   flex-direction: column;
+  border: solid 2px #ffd700;
+  margin-right: 5vw;  
   
   @media (max-width: 900px) {
-    flex-direction: row;  
+    flex-direction: row;
+    margin-left: 5vw; 
+    height: 20vw;   
   }
-  
 `
 
 class SkateParkPage extends Component {
@@ -116,6 +123,7 @@ class SkateParkPage extends Component {
       .then(({data}) => {
         this.setState({featuredPark: data,
                       id,
+                      name: data.name,
                       mainImage: data.images[0],
                       images: data.images,
                       address: data.address, 
@@ -125,6 +133,8 @@ class SkateParkPage extends Component {
                       rating: data.rating, 
                       latitude: data.latitude, 
                       longitude: data.longitude,
+                      geolat: data.geolat,
+                      geolong: data.geolong,
                       website: data.website,
                       mainIndex: 0,
                     })
@@ -133,7 +143,8 @@ class SkateParkPage extends Component {
     } else {
       featuredPark = skateParks.find(park => park._id === id)
       this.setState({featuredPark,
-                      id, 
+                      id,
+                      name: featuredPark.name, 
                       mainImage: featuredPark.images[0],
                       images: featuredPark.images,
                       address: featuredPark.address,
@@ -143,6 +154,8 @@ class SkateParkPage extends Component {
                       rating: featuredPark.rating,
                       latitude: featuredPark.latitude, 
                       longitude: featuredPark.longitude,
+                      geolat: data.geolat,
+                      geolong: data.geolong,
                       website: featuredPark.website,
                       mainIndex: 0,
                     })
@@ -156,7 +169,7 @@ class SkateParkPage extends Component {
   
   render () {
     console.log (this.state, 'state in park page')
-    const { featuredPark, id, images, mainImage, address, phone, region, website, mainIndex } = this.state
+    const { name, featuredPark, id, images, mainImage, address, phone, region, website, mainIndex, geolat, geolong } = this.state
     return (
       <>
         <Header/>
@@ -192,6 +205,9 @@ class SkateParkPage extends Component {
               </div>
             </DetailsContainer>
           </MainContainer>
+        )}
+        {featuredPark !== undefined && (
+        <MapPark id={id} name={name} address={address} geolat={geolat} geolong={geolong}/>
         )}
       </>
     )

@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: path.resolve(__dirname, './src/index.jsx'),
@@ -8,6 +9,9 @@ module.exports = {
     filename: 'bundle.js',
   },
   mode: 'development',
+  node: {
+    fs: 'empty',
+  },
   module : {
     rules: [
       {
@@ -32,7 +36,7 @@ module.exports = {
       extensions: ['.js', '.jsx']
     },
   plugins: [
-    new webpack.EnvironmentPlugin(['MAP_API'])
+    new Dotenv()
   ],
   watch: true,
 };
