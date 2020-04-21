@@ -33,10 +33,11 @@ const Details = styled.p`
   margin-top: .25vw; 
   margin-bottom: .25vw; 
   color: white;
-  @media (max-width: 900px) {
-    margin-right: 5vw; 
-  } 
 `
+
+// @media (max-width: 900px) {
+//   margin-right: 5vw; 
+// } 
 
 const WebLink = styled.a`
   display: inline-block;
@@ -59,12 +60,7 @@ const MainContainer = styled.div`
   width: 100%; 
   height: auto;
   display: grid;
-  grid-template-columns: 8fr 4fr;
-  
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr; 
-    grid-template-rows: 1fr 1fr; 
-  }
+  grid-template-columns: 9fr 3fr;
 `
 
 const ImagesContainer = styled.div`
@@ -96,13 +92,12 @@ const DetailsContainer = styled.div`
   display: flex; 
   flex-direction: column;
   border: solid 2px #ffd700;
-  margin-right: 5vw;  
-  
-  @media (max-width: 900px) {
-    flex-direction: row;
-    margin-left: 5vw; 
-    height: 20vw;   
-  }
+  margin-right: 5vw;    
+`
+
+const MapContainer = styled.div`
+  display: flex;
+  justify-content: center; 
 `
 
 class SkateParkPage extends Component {
@@ -139,7 +134,7 @@ class SkateParkPage extends Component {
                       mainIndex: 0,
                     })
       })
-      .catch (error => console.log (`This is the error: ${error}`))
+      .catch (error => console.log (`Error in get request in ParkPage ${error}`))
     } else {
       featuredPark = skateParks.find(park => park._id === id)
       this.setState({featuredPark,
@@ -154,8 +149,8 @@ class SkateParkPage extends Component {
                       rating: featuredPark.rating,
                       latitude: featuredPark.latitude, 
                       longitude: featuredPark.longitude,
-                      geolat: data.geolat,
-                      geolong: data.geolong,
+                      geolat: featuredPark.geolat,
+                      geolong: featuredPark.geolong,
                       website: featuredPark.website,
                       mainIndex: 0,
                     })
@@ -207,7 +202,9 @@ class SkateParkPage extends Component {
           </MainContainer>
         )}
         {featuredPark !== undefined && (
-        <MapPark id={id} name={name} address={address} geolat={geolat} geolong={geolong}/>
+          <MapContainer>
+            <MapPark id={id} name={name} address={address} geolat={geolat} geolong={geolong}/>
+          </MapContainer>
         )}
       </>
     )

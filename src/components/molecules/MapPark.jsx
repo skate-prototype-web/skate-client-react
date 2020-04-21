@@ -6,6 +6,7 @@ import mapPin from '../../images/Enso-Map-Pin.png'
 const MapContainer = styled.div`
   border: solid rgb(119, 33, 46);
   margin-top: 3vw; 
+  width: 85vw;
 `
 
 const SkateImage = styled.img `
@@ -21,6 +22,15 @@ const SkateImage = styled.img `
 const PopupName = styled.h3`
   font-family: 'Dosis', sans-serif;
   font-weight: 200;  
+`
+const PopupDetails = styled.span`
+  font-family: 'Dosis', sans-serif; 
+  font-weight: 200;   
+`
+
+const PopupDetailsTitle = styled.p`
+  font-family: 'Dosis', sans-serif; 
+  font-weight: 400; 
 `
 
 const PopupContainer = styled.div`
@@ -38,7 +48,7 @@ const MapPark = props => {
     width: '85vw',
     height: '50vw'
   })
-  const [selectedPark, setPark] = useState(null)
+  const [selectedPark, setPark] = useState(false)
   useEffect(() => {
     const listener = (e) => {
       if (e.key === 'Escape') {
@@ -51,7 +61,6 @@ const MapPark = props => {
     }
   }, [])
 
-  console.log (pinLong, pinLat, parseFloat(geolong), parseFloat(geolat), 'coordinates')
   return (
     <MapContainer>
       <ReactMapGL
@@ -85,6 +94,9 @@ const MapPark = props => {
             >
               <PopupContainer>
                 <PopupName>{name}</PopupName>
+                <PopupDetailsTitle>Address: <PopupDetials>{address.street}</PopupDetials>
+                <PopupDetails>{address.city}</PopupDetails>
+                </PopupDetailsTitle>
               </PopupContainer>
             </Popup>
           ) : null}
