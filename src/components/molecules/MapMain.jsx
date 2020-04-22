@@ -39,14 +39,16 @@ const SkateImage = styled.img `
 
 const MapMain = props => {
   const { skateParks } = props
-  const [viewport, setViewport] = useState( {
-    latitude: 34.0536909, 
-    longitude: -118.2427666,
+  const viewIt = { 
+    latitude: 34.0536909,
+    longitude:-118.2427666, 
     zoom: 10,
     width: '85vw',
     height: '50vw'
-  })
+  }
+  const [viewport, setViewport] = useState(viewIt)
   const [selectedPark, setPark] = useState(null)
+
   useEffect(() => {
     const listener = (e) => {
       if(e.key === "Escape") {
@@ -58,6 +60,18 @@ const MapMain = props => {
       window.removeEventListener("keydown", listener)
     }
   }, [])
+
+  useEffect(() => {
+    const resizeIt = () => {
+      setViewport(viewport)
+    }
+    window.addEventListener('resize', resizeIt)
+    return () => {
+      window.removeEventListener('resize', resizeIt)
+    }
+  }, [])
+
+
   return (
     <MapContainer>
       <ReactMapGL 
