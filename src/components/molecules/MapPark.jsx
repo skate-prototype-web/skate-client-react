@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import ReactMapGL, { Marker, Popup } from "react-map-gl"
+import useWindowSize from '../atoms/UseWindowSize'
 import styled from 'styled-components'
 import mapPin from '../../images/Enso-Map-Pin.png'
 
@@ -7,6 +8,7 @@ const MapContainer = styled.div`
   border: solid rgb(119, 33, 46);
   margin-top: 3vw; 
   width: 85vw;
+  height: 50vw; 
 `
 
 const SkateImage = styled.img `
@@ -38,17 +40,21 @@ const PopupContainer = styled.div`
 `
 
 const MapPark = props => {
+  const windowSize = useWindowSize()
   const { name, address, geolong, geolat, id } = props
   const pinLong = parseFloat(geolong)
   const pinLat = parseFloat(geolat)
-  const [viewport, setViewport] = useState ({
-    latitude: pinLat,
-    longitude: pinLong,
-    zoom: 15,
-    width: '85vw',
-    height: '50vw'
-  })
+  const view = {latitude: pinLat,
+                longitude: pinLong,
+                zoom: 15,
+                width: '85vw',
+                height: '50vw'
+              }
+              
+  const [viewport, setViewport] = useState (view)
+
   const [selectedPark, setPark] = useState(false)
+
   useEffect(() => {
     const listener = (e) => {
       if (e.key === 'Escape') {
@@ -58,6 +64,16 @@ const MapPark = props => {
     window.addEventListener('keydown', listener)
     return () => {
       window.removeEventListener('keydown', listener)
+    }
+  }, [])
+
+  useEffect(() => {
+    const resizeIt = () => {
+      setViewport(view)
+    }
+    window.addEventListener('resize', resizeIt)
+    return () => {
+      window.removeEventListener('resize', resizeIt)
     }
   }, [])
 
@@ -94,9 +110,7 @@ const MapPark = props => {
             >
               <PopupContainer>
                 <PopupName>{name}</PopupName>
-                <PopupDetailsTitle>Address: <PopupDetials>{address.street}</PopupDetials>
-                <PopupDetails>{address.city}</PopupDetails>
-                </PopupDetailsTitle>
+                <PopupDetails>{address.street}, {address.city}</PopupDetails>
               </PopupContainer>
             </Popup>
           ) : null}
