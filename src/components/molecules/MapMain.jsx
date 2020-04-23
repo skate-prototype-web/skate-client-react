@@ -46,6 +46,7 @@ const MapMain = props => {
     width: '85vw',
     height: '50vw'
   }
+
   const [viewport, setViewport] = useState(viewIt)
   const [selectedPark, setPark] = useState(null)
 
@@ -55,6 +56,7 @@ const MapMain = props => {
         setPark(null)
       }
     }
+
     window.addEventListener("keydown", listener)
     return () => {
       window.removeEventListener("keydown", listener)
@@ -70,7 +72,6 @@ const MapMain = props => {
       window.removeEventListener('resize', resizeIt)
     }
   }, [])
-
 
   return (
     <MapContainer>

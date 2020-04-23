@@ -6,15 +6,35 @@ import styled from 'styled-components'
 import regionNames from '../regionNames'
 import MapPark from '../Components/molecules/MapPark'
 
+const InformationContainer = styled.div`
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  border: solid blue; 
+`
+
+const NameContainer = styled.div`
+  display: flex; 
+  align-items: center;
+  flex-direction: column;
+  border: solid green;   
+`
 
 const ParkName = styled.h1 `
   font-weight: 600;
   color: rgb(119, 33, 46); 
   font-family: 'Dosis', sans-serif;
-  font-size: 4vw;
-  margin-left: 3vw;  
+  font-size: 3.75vw;
+  text-align: left;   
 `
 
+const Region = styled.h2 `
+  font-weight: 300; 
+  color: rgb(119, 33, 46);
+  font-family: 'Dosis', sans-serif; 
+  font-size: 3vw;
+  padding: 0;
+  text-align: left; 
+`
 const DetailTitle = styled.h4 `
   font-weight: 600;
   font-family: 'Dosis', sans-serif;
@@ -169,7 +189,30 @@ class SkateParkPage extends Component {
       <>
         <Header/>
           {featuredPark !== undefined && (
-            <ParkName>{featuredPark.name}</ParkName>
+            <InformationContainer>
+              <NameContainer>
+                <ParkName>{featuredPark.name}</ParkName>
+                <Region>{regionNames[region]} region</Region>
+              </NameContainer>
+              <DetailsContainer>
+                <div>
+                  <DetailTitle>Region</DetailTitle>
+                  <Details>{regionNames[region]}</Details>
+                </div>
+                <div>
+                  <DetailTitle>Address</DetailTitle>
+                  <Details>{address.street}</Details>
+                  <Details>{address.city}, {address.state} {address.zip}</Details>
+                </div>
+                <div>
+                  <DetailTitle>Phone</DetailTitle>
+                  <Details>{phone}</Details>
+                </div>
+                <div>
+                  <WebLink href={website}>website</WebLink>
+                </div>
+              </DetailsContainer>
+            </InformationContainer>
           )}
         {featuredPark !== undefined && (
           <MainContainer>
@@ -181,24 +224,6 @@ class SkateParkPage extends Component {
                 <SkateSlider parkImages={images} changeImage={this.changeImage} mainIndex={mainIndex}/>
               </OuterSliderContainer>
             </ImagesContainer>
-            <DetailsContainer>
-              <div>
-                <DetailTitle>Region</DetailTitle>
-                <Details>{regionNames[region]}</Details>
-              </div>
-              <div>
-                <DetailTitle>Address</DetailTitle>
-                <Details>{address.street}</Details>
-                <Details>{address.city}, {address.state} {address.zip}</Details>
-              </div>
-              <div>
-                <DetailTitle>Phone</DetailTitle>
-                <Details>{phone}</Details>
-              </div>
-              <div>
-                <WebLink href={website}>website</WebLink>
-              </div>
-            </DetailsContainer>
           </MainContainer>
         )}
         {featuredPark !== undefined && (
