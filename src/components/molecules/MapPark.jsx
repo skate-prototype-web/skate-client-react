@@ -12,7 +12,7 @@ const MapContainer = styled.div`
 `
 
 const SkateImage = styled.img `
-  height: 2.5vw; 
+  height: 4.5vw; 
   width: auto;
   
   &:hover{
@@ -23,16 +23,13 @@ const SkateImage = styled.img `
 
 const PopupName = styled.h3`
   font-family: 'Dosis', sans-serif;
-  font-weight: 200;  
-`
-const PopupDetails = styled.span`
-  font-family: 'Dosis', sans-serif; 
-  font-weight: 200;   
-`
-
-const PopupDetailsTitle = styled.p`
-  font-family: 'Dosis', sans-serif; 
   font-weight: 400; 
+  font-size: 2.25vw;  
+`
+const PopupDetails = styled.p`
+  font-family: 'Dosis', sans-serif; 
+  font-weight: 200;
+  font-size: 2vw;   
 `
 
 const PopupContainer = styled.div`
@@ -44,14 +41,14 @@ const MapPark = props => {
   const { name, address, geolong, geolat, id } = props
   const pinLong = parseFloat(geolong)
   const pinLat = parseFloat(geolat)
-  const view = {latitude: pinLat,
+  const viewIt = {latitude: pinLat,
                 longitude: pinLong,
                 zoom: 15,
                 width: '85vw',
                 height: '50vw'
               }
               
-  const [viewport, setViewport] = useState (view)
+  const [viewport, setViewport] = useState (viewIt)
 
   const [selectedPark, setPark] = useState(false)
 
@@ -69,7 +66,7 @@ const MapPark = props => {
 
   useEffect(() => {
     const resizeIt = () => {
-      setViewport(view)
+      setViewport(viewport)
     }
     window.addEventListener('resize', resizeIt)
     return () => {
