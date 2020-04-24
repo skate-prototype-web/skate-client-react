@@ -70,7 +70,9 @@ const Header = () => {
     <>
       <StyledHeaderContainer>
         <GlobalFonts/>
-        <StyledLogo src={ensoCursiveRed}/>
+        <Link to="/">
+          <StyledLogo src={ensoCursiveRed} />
+        </Link>
         <StyledHeaderTitle>Zen Skate Co.</StyledHeaderTitle>
       </StyledHeaderContainer>
       <StyledNavContainer>
