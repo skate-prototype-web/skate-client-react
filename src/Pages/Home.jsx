@@ -4,12 +4,21 @@ import Header from '../Components/organisms/Header'
 import CentralImageDisplay from '../Components/molecules/CentralImageDisplay'
 import Footer from '../Components/organisms/Footer'
 
+const HomeContainer = styled.div`
+  position: relative;
+  min-height: 100vh; 
+  padding-bottom: 10vw;  
+`
+
+
 const Home = props => {
 
   return (
     <>
       <Header/>
-      <CentralImageDisplay/>
+      <HomeContainer>
+        <CentralImageDisplay/>
+      </HomeContainer>
       <Footer/>
     </>
   );

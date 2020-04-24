@@ -20,7 +20,7 @@ const StyledImageContainer = styled.div`
   justify-content: center;
   background: linear-gradient(80deg, rgba(119,33,46, .7), rgba(255,0,0,.1) 70%),
   linear-gradient(70deg, rgba(119,33,46, .5), rgba(0,0,255,.2) 60%);
-  z-index: 1;  
+  z-index: 1; 
 `
 
 const StyledHomeImage = styled.img`

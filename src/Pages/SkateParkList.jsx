@@ -3,7 +3,7 @@ import Header from '../Components/organisms/Header'
 import MapMain from '../Components/molecules/MapMain'
 import styled from 'styled-components'
 import AreaParks from '../Components/organisms/parks/AreaParks'
-
+import Footer from '../Components/organisms/Footer'
 
 const StyledHomeTitle = styled.h1`
   font-weight: 400;
@@ -42,6 +42,7 @@ const SkateParkList = props => {
           })}
         </StyledParksContainer>
       )}
+      <Footer/>
     </>
   )
 }
