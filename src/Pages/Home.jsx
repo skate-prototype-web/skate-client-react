@@ -5,9 +5,8 @@ import CentralImageDisplay from '../Components/molecules/CentralImageDisplay'
 import Footer from '../Components/organisms/Footer'
 
 const HomeContainer = styled.div`
-  position: relative;
-  min-height: 100vh; 
-  padding-bottom: 10vw;  
+  padding-bottom: 10vw;
+  min-height: 100%;  
 `
 
 

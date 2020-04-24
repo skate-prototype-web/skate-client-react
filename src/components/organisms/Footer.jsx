@@ -28,7 +28,7 @@ const Footer = props => {
   return (
     <ZenFooter>
       <FooterZen>
-        &#169; 2020 Zen Skate Co. Ensō 
+        &#169; 2020 Zen Skate Co.
       </FooterZen>
       <FooterBuild>
         Engineered and built from the ground up by Scott Nassau on a MERN Stack
