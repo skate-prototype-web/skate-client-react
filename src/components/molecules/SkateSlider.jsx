@@ -2,9 +2,35 @@ import React,{ useState} from 'react'
 import styled from 'styled-components'
 import Slider from 'react-slick'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+
+const SliderContainer = styled.div `
+  overflow: hidden;
+`
+
+const StyledSlider = styled(Slider)`
+  display: grid;
+  grid-template-rows: 1fr 10fr 1fr;
+`
+
+const InnerStyledSlider = styled.div`
+  display: flex; 
+  flex-direction: column;
+`
+
+const StyledSliderAlt = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 10fr 1fr;
+  height: 45vw;  
+`
+
+const ArrowContainer = styled.div`
+  font-size: 2vw;
+  justify-content: center;
+  display: flex;
+`
 
 const ParkImage = styled.img`
   height: 10vw;
@@ -25,77 +51,80 @@ const InnerImageContainer = styled.div `
   width: 12.5vw;
   border-radius: 11px; 
   margin: auto;
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-`
-const OuterImageContainer = styled.div`
-  display: flex;   
-  align-items: center;
-  justify-content: center;
-`
-
-const SliderContainer = styled.div `
-  width: 70vw;
-`
-
-const RightArrowContainer = styled.div` 
-  font-size: 2vw;
-  display: flex; 
-  align-items: center;
-  justify-content: flex-start;   
-`
-
-const LeftArrowContainer = styled.div`
-  font-size: 2vw;
-  justify-content: flex-end; 
-  align-items: center; 
   display: flex;
+  align-items: center; 
+  justify-content: center
 `
 
-const SliderRightArrow = props => {
-  const { onClick, displayRight } = props
+const OuterImageContainer = styled.div`  
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+`
+
+const InnerImageContainerAlt = styled.div `
+  background: ${props => (props.mainIndex === props.index) ? '#ffd700' : 'white'};
+  border: 2px solid ${props => (props.mainIndex === props.index) ? '#ffd700' : 'white'};
+  width: 12.5vw;
+  border-radius: 11px; 
+  margin: auto;
+  display: flex;
+  align-items: flex-start; 
+  justify-content: center
+`
+
+const OuterImageContainerAlt = styled.div`  
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 1vw; 
+  margin-bottom: 1vw;  
+`
+
+const SliderDownArrow = props => {
+  const { onClick, displayDown } = props
   return (
-    <RightArrowContainer>
-      {displayRight === true && (
+    <ArrowContainer>
+      {displayDown === true && (
       <FontAwesomeIcon
-        icon={faChevronRight} 
+        icon={faChevronDown} 
         size="lg" 
         color="rgb(119, 33, 46)"
         onClick={onClick} 
       />
       )}
-    </RightArrowContainer>
+    </ArrowContainer>
   )
 }
 
-const SliderLeftArrow = props => {
-  console.log (props, 'props in left')
-  const { onClick, displayLeft } = props
+const SliderUpArrow = props => {
+  const { onClick, displayUp } = props
   return (
-    <LeftArrowContainer>
-      {displayLeft === true && (
+    <ArrowContainer>
+      {displayUp === true && (
         <FontAwesomeIcon
-        icon={faChevronLeft} 
+        icon={faChevronUp} 
         size="lg" 
         color="rgb(119, 33, 46)"
         onClick={onClick} 
         />
       )}
-    </LeftArrowContainer>
+    </ArrowContainer>
   )
 }
 
 const SkateSlider = props => {
   const { parkImages, changeImage, mainIndex } = props
-  console.log (mainIndex, 'mainIndex')
-  const [displayRight, setDisplayRight] = useState(true)
-  const [displayLeft, setDisplayLeft] = useState(false)
+  const displayArrows = (parkImages.length > 3) ? true : false
+  const [displayDown, setDisplayDown] = useState(displayArrows)
+  const [displayUp, setDisplayUp] = useState(false)
 
   const setArrowDisplay = index => {
     const getLength = parkImages.length
-    setDisplayLeft(index !== 0)
-    setDisplayRight(getLength - index > 3)
+    setDisplayUp(index !== 0)
+    setDisplayDown(getLength - index > 3)
   }
 
   const sliderSettings = {
@@ -103,32 +132,54 @@ const SkateSlider = props => {
     infinite: false, 
     speed: 600,
     centerMode: false,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    nextArrow: <SliderRightArrow displayRight={displayRight} />,
-    prevArrow: <SliderLeftArrow displayLeft={displayLeft} />,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    nextArrow: <SliderDownArrow displayDown={displayDown} />,
+    prevArrow: <SliderUpArrow displayUp={displayUp} />,
+    vertical: true, 
     afterChange: index => setArrowDisplay(index)
   }
-
+  
   return (
     <SliderContainer>
-    <Slider style={{display: "grid", gridTemplateColumns: ".5fr 11fr .5fr"}}
-    {...sliderSettings}
-    >
-      {parkImages.map((image, index) => (
-      <OuterImageContainer>
-        <InnerImageContainer mainIndex={mainIndex} index={index}>
-          <ParkImage 
-            src={image}
-            onClick={() => changeImage(index)}
-            key={index}
-            mainIndex={mainIndex}
-            index={index}
-          />  
-        </InnerImageContainer>
-      </OuterImageContainer>
-      ))}
-    </Slider>
+    {displayArrows ? 
+      (<StyledSlider
+        {...sliderSettings}
+      >
+        {parkImages.map((image, index) => (
+        <OuterImageContainer>
+          <InnerImageContainer mainIndex={mainIndex} index={index}>
+            <ParkImage 
+              src={image}
+              onClick={() => changeImage(index)}
+              key={index}
+              mainIndex={mainIndex}
+              index={index}
+            />  
+          </InnerImageContainer>
+        </OuterImageContainer>
+        ))}
+      </StyledSlider>)
+    : 
+      (<StyledSliderAlt>
+        <SliderUpArrow/>
+        <InnerStyledSlider>
+          {parkImages.map((image, index) =>
+          <OuterImageContainerAlt>
+            <InnerImageContainerAlt mainIndex={mainIndex} index={index}>
+              <ParkImage 
+                src={image}
+                onClick={() => changeImage(index)}
+                key={index}
+                mainIndex={mainIndex}
+                index={index}
+              />  
+            </InnerImageContainerAlt>
+          </OuterImageContainerAlt>
+          )}
+        </InnerStyledSlider>
+        <SliderDownArrow/>
+      </StyledSliderAlt>)}
     </SliderContainer>
   )
 }

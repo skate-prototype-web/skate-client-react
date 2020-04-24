@@ -8,15 +8,13 @@ import MapPark from '../Components/molecules/MapPark'
 
 const InformationContainer = styled.div`
   display: grid;
-  grid-template-columns: 7fr 5fr;
-  border: solid blue; 
+  grid-template-columns: 9fr 3fr;
+  margin-top: .5vw; 
 `
 
 const NameContainer = styled.div`
   display: flex; 
-  align-items: center;
-  flex-direction: column;
-  border: solid green;   
+  flex-direction: column; 
 `
 
 const ParkName = styled.h1 `
@@ -24,7 +22,9 @@ const ParkName = styled.h1 `
   color: rgb(119, 33, 46); 
   font-family: 'Dosis', sans-serif;
   font-size: 3.75vw;
-  text-align: left;   
+  text-align: left;
+  margin-left: 3vw; 
+  margin-bottom: 0;  
 `
 
 const Region = styled.h2 `
@@ -33,12 +33,15 @@ const Region = styled.h2 `
   font-family: 'Dosis', sans-serif; 
   font-size: 3vw;
   padding: 0;
-  text-align: left; 
+  text-align: left;
+  margin-top: 1vw; 
+  margin-left: 3vw; 
 `
+
 const DetailTitle = styled.h4 `
-  font-weight: 600;
+  font-weight: 400;
   font-family: 'Dosis', sans-serif;
-  font-size: 2vw; 
+  font-size: 1.85vw; 
   margin-left: 1vw; 
   margin-top: 1vw; 
   margin-bottom: .25vw; 
@@ -48,7 +51,7 @@ const DetailTitle = styled.h4 `
 const Details = styled.p`
   font-weight: 300; 
   font-family: 'Dosis', sans-serif; 
-  font-size: 2vw; 
+  font-size: 1.65vw; 
   margin-left: 1.5vw; 
   margin-top: .25vw; 
   margin-bottom: .25vw; 
@@ -71,21 +74,23 @@ const WebLink = styled.a`
 
   &:hover{
     cursor: pointer; 
-    color: rgb(119, 33, 46);
+    color: #ffd700;
     font-weight: 700; 
   }
 `
 
-const MainContainer = styled.div`
+// const MainContainer = styled.div`
+//   width: 100%; 
+//   height: auto;
+//   display: grid;
+//   grid-template-columns: 9fr 3fr;
+// `
+
+const ImagesContainer = styled.div`
   width: 100%; 
   height: auto;
   display: grid;
   grid-template-columns: 9fr 3fr;
-`
-
-const ImagesContainer = styled.div`
-  display: grid;
-  grid-template-rows: 7fr 5 fr;
   justify-content: center; 
 `
 
@@ -96,23 +101,22 @@ const MainImageContainer = styled.div`
 const MainParkImage = styled.img` 
   width: 70vw;
   height: 45vw;
-  object-fit: contain; 
+  object-fit: fill  ;
+  border: solid #A9A9A9;
+  margin-left: 3vw; 
 `
 
 const OuterSliderContainer = styled.div`
-  width: 100%;
-  height: 15vw; 
-  display: flex; 
   justify-content: center;
-  align-items: center;  
+  align-items: center;
+  display: flex; 
 `
 
 const DetailsContainer = styled.div`
   background: rgba(119, 33, 46, .7);
   display: flex; 
   flex-direction: column;
-  border: solid 2px #ffd700;
-  margin-right: 5vw;    
+  border: solid 2px #ffd700;    
 `
 
 const MapContainer = styled.div`
@@ -196,10 +200,6 @@ class SkateParkPage extends Component {
               </NameContainer>
               <DetailsContainer>
                 <div>
-                  <DetailTitle>Region</DetailTitle>
-                  <Details>{regionNames[region]}</Details>
-                </div>
-                <div>
                   <DetailTitle>Address</DetailTitle>
                   <Details>{address.street}</Details>
                   <Details>{address.city}, {address.state} {address.zip}</Details>
@@ -215,16 +215,14 @@ class SkateParkPage extends Component {
             </InformationContainer>
           )}
         {featuredPark !== undefined && (
-          <MainContainer>
-            <ImagesContainer>
-              <MainImageContainer>
-                <MainParkImage src={mainImage}/>
-              </MainImageContainer>
-              <OuterSliderContainer>
-                <SkateSlider parkImages={images} changeImage={this.changeImage} mainIndex={mainIndex}/>
-              </OuterSliderContainer>
-            </ImagesContainer>
-          </MainContainer>
+          <ImagesContainer>
+            <MainImageContainer>
+              <MainParkImage src={mainImage}/>
+            </MainImageContainer>
+            <OuterSliderContainer>
+              <SkateSlider parkImages={images} changeImage={this.changeImage} mainIndex={mainIndex}/>
+            </OuterSliderContainer>
+          </ImagesContainer>
         )}
         {featuredPark !== undefined && (
           <MapContainer>
