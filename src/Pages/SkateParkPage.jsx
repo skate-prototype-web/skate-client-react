@@ -5,6 +5,7 @@ import SkateSlider from '../Components/molecules/SkateSlider'
 import styled from 'styled-components'
 import regionNames from '../regionNames'
 import MapPark from '../Components/molecules/MapPark'
+import Footer from '../Components/organisms/Footer'
 
 const InformationContainer = styled.div`
   display: grid;
