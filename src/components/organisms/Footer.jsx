@@ -9,12 +9,17 @@ const ZenFooter = styled.footer`
   position: relative;     
 `
 
+const FooterBreak = styled.div`
+  height: 1vw;
+  width: 100vw;  
+`
+
 const FooterZen = styled.p `
   color: white;
   font-family: 'Dosis', sans-serif;
   font-size: 1.85vw;
   margin-left: 3vw;
-  padding-top: 2vw;   
+  margin-top: 0;   
 `
 
 const FooterBuild = styled.p`
@@ -27,6 +32,7 @@ const FooterBuild = styled.p`
 const Footer = props => {
   return (
     <ZenFooter>
+      <FooterBreak/>
       <FooterZen>
         &#169; 2020 Zen Skate Co.
       </FooterZen>

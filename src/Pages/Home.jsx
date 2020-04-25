@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import Header from '../Components/organisms/Header'
 import CentralImageDisplay from '../Components/molecules/CentralImageDisplay'
 import Footer from '../Components/organisms/Footer'
+import AboutHomePage from '../Components/molecules/AboutHomePage'
 
 const HomeContainer = styled.div`
   padding-bottom: 10vw;
@@ -17,6 +18,7 @@ const Home = props => {
       <Header/>
       <HomeContainer>
         <CentralImageDisplay/>
+        <AboutHomePage/>
       </HomeContainer>
       <Footer/>
     </>
