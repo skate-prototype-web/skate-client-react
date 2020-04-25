@@ -4,6 +4,7 @@ import Header from '../Components/organisms/Header'
 import CentralImageDisplay from '../Components/molecules/CentralImageDisplay'
 import Footer from '../Components/organisms/Footer'
 import AboutHomePage from '../Components/molecules/AboutHomePage'
+import ParksHomePage from '../Components/molecules/ParksHomePage'
 
 const HomeContainer = styled.div`
   padding-bottom: 10vw;
@@ -19,6 +20,7 @@ const Home = props => {
       <HomeContainer>
         <CentralImageDisplay/>
         <AboutHomePage/>
+        <ParksHomePage/>
       </HomeContainer>
       <Footer/>
     </>
