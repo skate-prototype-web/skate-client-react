@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import HomeSlider from './HomeSlider'
+import ParkSlideShow from './ParkSlideShow'
 
 const MainPHPContainer = styled.div`
   display: flex; 
@@ -22,7 +22,7 @@ const RightContainer = styled.div`
   flex-direction: column;     
 `
 
-const LargeSliderContainer = styled.div`
+const LargeSlideContainer = styled.div`
   width: 100%; 
   height: 35vw;
   border: solid brown;
@@ -53,12 +53,12 @@ const ParksHomePage = props => {
         </LeftContainer>
         <RightContainer>
           <Title>Los Angeles Skate Parks </Title>
-          <LargeSliderContainer>
+          <LargeSlideContainer>
             {skateParks ? 
-              <HomeSlider skateParks={skateParks}/>
+              <ParkSlideShow skateParks={skateParks}/>
               : null
             }
-          </LargeSliderContainer>
+          </LargeSlideContainer>
         </RightContainer>
       </MainPHPContainer>
     </>
