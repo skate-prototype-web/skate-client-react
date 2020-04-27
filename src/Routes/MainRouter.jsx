@@ -45,7 +45,7 @@ class MainRouter extends Component {
     return (
       <>
         <Router>
-          <Home path="/"/>
+          <Home path="/" skateParks={skateParksRaw}/>
           <About path="/about"/>
           <SkateParks path="skateparks" skateParks={skateParksMapped} skateParksRaw={skateParksRaw}>
             <SkateParkPage path="/:id" skateParksRaw={skateParksRaw}/>

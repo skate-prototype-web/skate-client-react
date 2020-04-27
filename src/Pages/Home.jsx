@@ -7,20 +7,18 @@ import AboutHomePage from '../Components/molecules/AboutHomePage'
 import ParksHomePage from '../Components/molecules/ParksHomePage'
 
 const HomeContainer = styled.div`
-  padding-bottom: 10vw;
   min-height: 100%;  
 `
 
-
 const Home = props => {
-
+  const { skateParks } = props
   return (
     <>
       <Header/>
       <HomeContainer>
         <CentralImageDisplay/>
         <AboutHomePage/>
-        <ParksHomePage/>
+        <ParksHomePage skateParks={skateParks}/>
       </HomeContainer>
       <Footer/>
     </>
