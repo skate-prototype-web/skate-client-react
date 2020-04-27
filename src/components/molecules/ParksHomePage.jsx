@@ -1,32 +1,65 @@
 import React from 'react'
 import styled from 'styled-components'
+import HomeSlider from './HomeSlider'
 
 const MainPHPContainer = styled.div`
+  display: flex; 
   width: 100vw; 
-  height: 35vw; 
-  background: rgba(220, 220, 220, .7) ;
+  height: 45vw; 
+  flex-direction: row;
+  background: rgba(220, 220, 220, .6) ;
 `
 
-const TitleMargin = styled.div`
-  height: 1vw; 
-  width: 100vw; 
+const LeftContainer = styled.div`
+  border: solid red;
+  width: 40vw; 
 `
 
-const AboutTitle = styled.h2`
+const RightContainer = styled.div`
+  border: solid blue;
+  width: 60vw;
+  display: flex;
+  flex-direction: column;     
+`
+
+const LargeSliderContainer = styled.div`
+  width: 100%; 
+  height: 35vw;
+  border: solid brown;
+  display: flex;
+  align-itmes: center;
+  justify-content: center; 
+`
+
+const Title = styled.h2`
   color: black; 
   font-family: 'Dosis', sans-serif;
   font-weight: 200; 
   font-size: 3vw;
-  margin-left: 2vw;
-  text-align: left; 
+  margin-right: 2vw;
+  margin-top: 3vw;
+  text-align: right;
+  margin-bottom: 2vw;  
 `
 
 const ParksHomePage = props => {
+  const {skateParks} = props
+  console.log (skateParks, 'skateyskateyparks')
   return (
     <>
       <MainPHPContainer>
-        <TitleMargin/>
-        <AboutTitle>About Zen SK8</AboutTitle>
+        <LeftContainer>
+          Green
+        </LeftContainer>
+        <RightContainer>
+          <Title>Los Angeles Skate Parks </Title>
+          <LargeSliderContainer>
+            {skateParks ? 
+              <HomeSlider skateParks={skateParks}/>
+              : null
+            }
+          </LargeSliderContainer>
+        </RightContainer>
       </MainPHPContainer>
     </>
   )

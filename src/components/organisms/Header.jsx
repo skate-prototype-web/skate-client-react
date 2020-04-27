@@ -35,8 +35,8 @@ const StyledNavContainer = styled.div`
   height: 5vw;
   background: rgb(119, 33, 46);
   justify-content: flex-end;
-  border-top: .25vw solid #ffd700; 
-  border-bottom: .25vw solid #ffd700;   
+  border-top: 1px solid #F8F8FF; 
+  border-bottom: 1px solid #F8F8FF;   
 `
 
 const StyledNav = styled.nav`
@@ -60,7 +60,7 @@ const StyledLink = styled(Link)`
   } 
   
   &:hover {
-    font-weight: 200;
+    font-weight: 400;
     color: #ffd700;
   }
 `
