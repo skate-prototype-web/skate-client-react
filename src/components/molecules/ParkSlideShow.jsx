@@ -1,49 +1,80 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
+  import React, { useState, useEffect } from 'react'
+  import styled from 'styled-components'
 
-const SlidesContainer = styled.div`
-  border: solid blue; 
-  height: 20vw;
-  width: 35vw;
-  object-fit: cover; 
-`
+  const SlidesContainer = styled.div`
+    object-fit: cover; 
+    display: flex;
+    width: 45vw; 
+    height: 30vw; 
+    background: white; 
+    justify-content: center; 
+    align-items: center;
+    border: solid 1px #D3D3D3;     
+  `
 
-const ParkImage = styled.img `
-  width: 100%;
-  height: 100%;
-`
+  const ParkImage = styled.img `
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+  `
+  const OuterContainer = styled.div`
+    display: flex; 
+    flex-direction: column;
+  `
+  const ParkName = styled.h3 `
+    text-align: center; 
+    font-family: 'Dosis', sans-serif; 
+    margin-top: 1vw;
+    margin-bottom: 1vw; 
+    font-size: 2.5vw; 
+    font-weight: 300; 
+  `
 
-const ParkSlideShow = props => {
-  const { skateParks } = props
-  const [current, setCurrent] = useState(0)
-  const { length } = skateParks
-  
-  const getNext = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1)
-  }
+  const ParkSlide = styled.div`
+    position: absolute;
+    width: 42vw;
+    height: 27vw;
+    display: flex;
+    transition: .9s ease;
+    opacity: ${props => props.current === props.index ? '1' : '0'};
+    transition-duration: ${props => props.current === props.index ? '.9s' : '0'};
+  `
 
-  useEffect(() => {
-    setTimeout(getNext, 3000)
-    return function(){
-      clearTimeout(getNext)
+  const ParkSlideShow = props => {
+    const { skateParks } = props
+    const [current, setCurrent] = useState(0)
+    const { length } = skateParks
+    
+    const getNext = () => {
+      setCurrent(current === length - 1 ? 0 : current + 1)
     }
-  })
 
-  if (!Array.isArray(skateParks) || length <= 0) {
-    return null; 
+    useEffect(() => {
+      setTimeout(getNext, 5000)
+      return function() {
+        clearTimeout(getNext)
+      }
+    })
+
+    if (!Array.isArray(skateParks) || length <= 0) {
+      return null; 
+    }
+    return (
+      <>
+      <OuterContainer>
+        {skateParks ? 
+          <SlidesContainer>
+            {skateParks.map((park, index) => (
+              <ParkSlide index={index} current={current}>
+                <ParkImage src={park.images[0]}/>
+              </ParkSlide>
+            ))}
+          </SlidesContainer>
+        : null}
+        <ParkName>{skateParks[current].name}</ParkName>
+      </OuterContainer>
+      </>
+    )
   }
-  console.log (skateParks[0].images[0], 'goagadf')
-  return (
-    <>
-    {skateParks ? 
-      <SlidesContainer>
-        {skateParks.map((park, index) => (
-          <ParkImage src={park.images[0]}/>
-        ))}
-      </SlidesContainer>
-    : null}
-    </>
-  )
-}
 
-export default ParkSlideShow
+  export default ParkSlideShow
