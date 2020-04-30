@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
 const parser = require('body-parser');
+const dotenv = require('dotenv').config()
 
-const port = 3283;
+const port = process.env.ZEN_PORT;
 const app = express();
 
 app.use(parser.json());

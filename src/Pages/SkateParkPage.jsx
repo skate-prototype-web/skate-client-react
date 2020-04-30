@@ -139,7 +139,7 @@ class SkateParkPage extends Component {
     let featuredPark
     if (skateParks === undefined) {
       axios 
-      .get(`http://localhost:9000/skateparks/api/parks/${id}`)
+      .get(`http://54.245.129.246:9000/skateparks/api/parks/${id}`)
       .then(({data}) => {
         this.setState({featuredPark: data,
                       id,

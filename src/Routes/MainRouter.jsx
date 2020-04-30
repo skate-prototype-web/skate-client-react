@@ -18,7 +18,7 @@ class MainRouter extends Component {
 
  componentDidMount () {
     axios
-    .get('http://localhost:9000/skateparks/api/parks')
+    .get('http://54.245.129.246:9000/skateparks/api/parks')
     .then(({data}) => {
       let regions = {}
       data.map(park => {
