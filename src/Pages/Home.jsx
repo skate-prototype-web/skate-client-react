@@ -7,7 +7,8 @@ import AboutHomePage from '../Components/molecules/AboutHomePage'
 import ParksHomePage from '../Components/molecules/ParksHomePage'
 
 const HomeContainer = styled.div`
-  min-height: 100%;  
+  @media (min-width: 900px) { 
+  }
 `
 
 const Home = props => {
