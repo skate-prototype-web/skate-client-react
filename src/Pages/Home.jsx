@@ -7,8 +7,13 @@ import AboutHomePage from '../Components/molecules/AboutHomePage'
 import ParksHomePage from '../Components/molecules/ParksHomePage'
 
 const HomeContainer = styled.div`
-  @media (min-width: 900px) { 
-  }
+  width: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+  position: relative;
+  background: rgba(192,192,192,.4);   
 `
 
 const Home = props => {
