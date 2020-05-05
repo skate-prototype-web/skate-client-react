@@ -4,11 +4,17 @@ import logo from '../../images/enso_cursive_darkred.png'
 import { Link } from '@reach/router'
 
 const MainAHPContainer = styled.div`
-  width: 100vw; 
-  height: 45vw; 
+  width: 100%; 
+  height: 45vw;
+  max-width: 1100px;
   background: #F8F8FF;
   display: flex;
   flex-direction: row;
+  border: solid blue;
+  @media(min-width: 1100px) {
+    height: 500px;  
+  }
+
 `
 
 const ImageContainer = styled.div`
@@ -22,14 +28,18 @@ const AboutHomeImageContainer = styled.div`
   margin-left: 3vw;
   display: flex; 
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
+  @media(min-width: 1100px) {
+    width: 520px; 
+    height; 450px; 
+  } 
 `
 
 const AboutImage = styled.img`
   width: 96%;
   height: 94%;
   padding: 1vw;
-  object-fit: cover;  
+  object-fit: cover;
 `
 
 const AboutTitle = styled.h2`
