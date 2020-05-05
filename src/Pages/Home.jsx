@@ -13,7 +13,7 @@ const HomeContainer = styled.div`
   justify-content: center;
   align-items: center; 
   position: relative;
-  background: rgba(192,192,192,.4);   
+  background: rgba(192,192,192,.2);   
 `
 
 const Home = props => {

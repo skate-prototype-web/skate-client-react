@@ -10,11 +10,11 @@ const MainAHPContainer = styled.div`
   background: #F8F8FF;
   display: flex;
   flex-direction: row;
-  border: solid blue;
   @media(min-width: 1100px) {
-    height: 500px;  
+    height: 500px;
+    border-radius: 8px;
+    margin-bottom: 5px;    
   }
-
 `
 
 const ImageContainer = styled.div`
@@ -30,8 +30,8 @@ const AboutHomeImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   @media(min-width: 1100px) {
-    width: 520px; 
-    height; 450px; 
+    width: 550px; 
+    height: 380px; 
   } 
 `
 
@@ -50,12 +50,20 @@ const AboutTitle = styled.h2`
   margin-left: 2vw;
   margin-top: 2vw; 
   margin-bottom: 2vw;  
-  text-align: left; 
+  text-align: left;
+
+  @media(min-width: 1100px) {
+    font-size: 34px; 
+  }  
 `
 
 const AboutHomeTextContainer = styled.div`
-  width: 23vw;  
+  width: 23vw;
+  @media(min-width: 1100px) {
+    width: 265px;  
+  } 
 `
+
 const AboutHomeText = styled.p`
   font-family: 'Dosis', sans-serif; 
   font-weight: 200;
@@ -63,11 +71,14 @@ const AboutHomeText = styled.p`
   color: rgb(119, 33, 46);
   margin-left: 2vw; 
   margin-right: 1vw;
-  margin-top: 1vw; 
+  margin-top: 1vw;
+  @media(min-width: 1100px) {
+    font-size: 25px; 
+  } 
 `
 
 const AboutTextMainContainer = styled.div`
-  width: 50vw;
+  width: 50%;
   display: flex;
   flex-direction: column;  
 `
@@ -92,7 +103,11 @@ const LogoContainer = styled.div`
 
 const ZenLogo = styled.img`
   width: 15vw; 
-  height: 15vw;  
+  height: 15vw;
+  @media(min-width: 1100px) {
+    width: 160px; 
+    height: 160px; 
+  }  
 `
 
 const StyledLink = styled(Link)`
@@ -105,6 +120,10 @@ const StyledLink = styled(Link)`
   
   &:hover {
     color: rgba(119, 33, 46, .6);
+  }
+
+  @media(min-width: 1100px) {
+    font-size: 32px; 
   }
 `
 

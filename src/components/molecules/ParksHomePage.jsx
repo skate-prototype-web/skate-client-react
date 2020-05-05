@@ -5,28 +5,35 @@ import { Link } from '@reach/router'
 
 const MainPHPContainer = styled.div`
   display: flex; 
-  width: 100vw; 
+  width: 100%;
+  max-width: 1100px;
   height: 45vw; 
   flex-direction: row;
-  background: rgba(220, 220, 220, .6) ;
+  background: rgba(220, 220, 220, .6);
+  
+  @media(min-width: 1100px) {
+    height: 500px;
+    border-radius: 8px;
+    margin-bottom: 5px; 
+  }
 `
 
 const LeftContainer = styled.div`
-  width: 40vw; 
+  width: 40%; 
 `
 
 const RightContainer = styled.div`
-  width: 60vw;
+  width: 60%;
   display: flex;
   flex-direction: column;     
 `
 
 const LargeSlideContainer = styled.div`
   width: 100%; 
-  height: 35vw;
+  height: 77%;
   display: flex;
   align-itmes: center;
-  justify-content: center; 
+  justify-content: center;
 `
 
 const CopyContainer = styled.div`
@@ -37,8 +44,11 @@ const CopyContainer = styled.div`
 const HomeParkCopy = styled.p`
   font-family: 'Dosis', sans-serif;
   font-size: 2.5vw; 
-  font-weight: 400;
-  line-height: 1.5; 
+  font-weight: 200;
+  line-height: 1.5;
+  @media(min-width: 1100px) {
+    font-size: 26px; 
+  }  
 `
 
 const Title = styled.h2`
@@ -49,7 +59,10 @@ const Title = styled.h2`
   margin-right: 2vw;
   margin-top: 3vw;
   text-align: right;
-  margin-bottom: 2vw;  
+  margin-bottom: 2vw;
+  @media(min-width: 1100px) {
+    font-size: 34px;
+  }  
 `
 
 const BottomLinkContainer = styled.div`
@@ -66,6 +79,10 @@ const StyledLink = styled(Link)`
   
   &:hover {
     color: rgba(119, 33, 46, .6);
+  }
+
+  @media(min-width: 1100px) {
+    font-size: 32px;
   }
 `
 

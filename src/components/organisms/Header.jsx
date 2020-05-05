@@ -9,20 +9,32 @@ const StyledHeaderContainer = styled.div`
   flex-direction: row;
   padding: 1vw;
   align-items: center;
+  @media(min-width: 1100px) {
+    padding: 10px;
+  } 
 `
 
 const StyledLogo = styled.img `
   width: auto;
-  height: 8vw;  
+  height: 7.5vw;
+  @media(min-width: 1100px) {
+    height: 75px; 
+  }  
 `
 
-const StyledHeaderTitle = styled.h3`
+const StyledHeaderTitle = styled.div`
+  width: 100%;  
+  text-align: center; 
   font-size: 5vw; 
-  margin: 0;
-  margin-left: 24%;  
+  margin: 0;  
   font-family: 'Osaka-Sans Serif';
   font-style: normal;
-  color: rgb(119, 33, 46);  
+  color: rgb(119, 33, 46);
+  margin-right: 8vw;  
+  @media(min-width: 1100px) {
+    font-size: 55px;
+    margin-right: 70px; 
+  } 
 `
 
 const StyledNavContainer = styled.div`
