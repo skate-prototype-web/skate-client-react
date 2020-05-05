@@ -9,7 +9,11 @@
     background: white; 
     justify-content: center; 
     align-items: center;
-    border: solid 1px #D3D3D3;     
+    border: solid 1px #D3D3D3;
+    @media(min-width: 1100px) {
+      width: 500px;
+      height: 330px; 
+    }     
   `
 
   const ParkImage = styled.img `
@@ -17,17 +21,22 @@
     width: 100%;
     height: 100%;
   `
+
   const OuterContainer = styled.div`
     display: flex; 
     flex-direction: column;
   `
+  
   const ParkName = styled.h3 `
     text-align: center; 
     font-family: 'Dosis', sans-serif; 
     margin-top: 1vw;
     margin-bottom: 1vw; 
     font-size: 2.5vw; 
-    font-weight: 300; 
+    font-weight: 300;
+    @media(min-width: 1100px) {
+      font-size: 28px;
+    } 
   `
 
   const ParkSlide = styled.div`
@@ -38,6 +47,10 @@
     transition: .9s ease;
     opacity: ${props => props.current === props.index ? '1' : '0'};
     transition-duration: ${props => props.current === props.index ? '.9s' : '0'};
+    @media(min-width: 1100px) {
+      width: 470px;
+      height: 300px; 
+    } 
   `
 
   const ParkSlideShow = props => {
