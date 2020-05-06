@@ -18,7 +18,7 @@ const StyledLogo = styled.img `
   width: auto;
   height: 7.5vw;
   @media(min-width: 1100px) {
-    height: 75px; 
+    height: 83px; 
   }  
 `
 
@@ -33,7 +33,7 @@ const StyledHeaderTitle = styled.div`
   margin-right: 8vw;  
   @media(min-width: 1100px) {
     font-size: 55px;
-    margin-right: 70px; 
+    margin-right: 83px; 
   } 
 `
 
