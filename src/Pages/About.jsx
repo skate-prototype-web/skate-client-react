@@ -18,7 +18,10 @@ const AboutTitle = styled.h1`
   font-size: 4vw; 
   color: rgb(119,33,46); 
   font-weight: 200; 
-  text-align: center;  
+  text-align: center;
+  @media(min-width: 1100px) {
+    font-size: 45px;  
+  }  
 `
 
 const ZenMotto = styled.h4 `
@@ -27,7 +30,10 @@ const ZenMotto = styled.h4 `
   color: rgba(119, 33, 46, .75);
   text-align: center;
   margin-top: 1vw;
-  margin-bottom: 1vw;  
+  margin-bottom: 1vw;
+  @media(min-width: 1100px) {
+    font-size: 88px;  
+  }  
 `
 
 const ZenTagLine = styled.h4 `
@@ -37,13 +43,24 @@ const ZenTagLine = styled.h4 `
   font-weight: 400; 
   text-align: center;
   margin-bottom: .5vw; 
-  margin-top: .5vw;  
+  margin-top: .5vw;
+  @media(min-width: 1100px) {
+    font-size: 27px; 
+  }  
 `
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   width: 100%; 
+`
+
+const TopContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  width: 100%;
+  background: white;  
 `
 
 const BlankDiv = styled.div`
@@ -115,17 +132,19 @@ const About = props => {
   <>
     <Header/>
     <AboutContainer>
-      <AboutTitle>What is Zen Skate Co?</AboutTitle>
-        <ZenMotto>
-          Letting the Mind Go . . . Letting the Body Flow
-        </ZenMotto>
-        <ZenTagLine>
-          Zen Skate Co celebrates that moment of equilibrium 
-        </ZenTagLine>
-        <ZenTagLine>
-          when the mind is freed to let the body create art through movement. 
-        </ZenTagLine>
-      <BlankDiv/>
+      <TopContainer>
+        <AboutTitle>What is Zen Skate Co?</AboutTitle>
+          <ZenMotto>
+            Letting the Mind Go . . . Letting the Body Flow
+          </ZenMotto>
+          <ZenTagLine>
+            Zen Skate Co celebrates that moment of equilibrium 
+          </ZenTagLine>
+          <ZenTagLine>
+            when the mind is freed to let the body create art through movement. 
+          </ZenTagLine>
+        <BlankDiv/>
+      </TopContainer>
       <Container>
         <ImageContainer>
           <ZenPicture src={'https://zenskate.s3-us-west-2.amazonaws.com/zen_shirt_01.jpeg'}/>
