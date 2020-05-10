@@ -13,6 +13,7 @@ const AboutContainer = styled.div`
   position: relative;
   background: rgba(192,192,192,.2)
 `
+
 const AboutTitle = styled.h1`
   font-family: 'Dosis', sans-serif;
   font-size: 4vw; 
@@ -52,7 +53,8 @@ const ZenTagLine = styled.h4 `
 const Container = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
-  width: 100%; 
+  width: 100%;
+  max-width: 1100px; 
 `
 
 const TopContainer = styled.div`
@@ -73,6 +75,9 @@ const ImageContainer = styled.div`
   background: rgba(119, 33, 46, .8);
   display: flex; 
   justify-content: center;
+  @media(min-width: 1100px) {
+    height: 550px; 
+  }
 `
 
 const ImageContainer2 = styled.div`
@@ -88,7 +93,10 @@ const ImageContainer3 = styled.div`
 `
 const ZenPicture = styled.img`
   object-fit: contain;
-  height: 50vw; 
+  height: 50vw;
+  @media(min-width: 1100px) {
+    height: 550px; 
+  }
 `
 
 const ZenPictureB = styled.img`
@@ -113,7 +121,10 @@ const AboutZenTextB = styled.p`
   text-align: right;
   margin-right: 3vw;
   margin-left: 3vw;
-  line-height: 1.4; 
+  line-height: 1.4;
+  @media(min-width: 1100px) {
+    font-size: 29px; 
+  }
 `
 
 const AboutZenTextA = styled.p`
@@ -124,7 +135,10 @@ const AboutZenTextA = styled.p`
   text-align: left;
   margin-right: 3vw;
   margin-left: 3vw;
-  line-height: 1.4; 
+  line-height: 1.4;
+  @media(min-width: 1100px) {
+    font-size: 29px; 
+  } 
 `
 
 const About = props => {
