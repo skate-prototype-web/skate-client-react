@@ -29,7 +29,6 @@ class MainRouter extends Component {
         }
       })
       let raw = data.filter(park => parseFloat(park.geolat) > 1)
-      console.log(raw, 'raw')
       let regionsInState = []
       for (let key in regions) {
         regionsInState.push(regions[key])
