@@ -84,13 +84,19 @@ const ImageContainer2 = styled.div`
   height: 50vw;
   background: white;
   display: flex; 
-  justify-content: center; 
+  justify-content: center;
+  align-items: center;
+  @media(min-width: 1100px) {
+    height: 550px; 
+  } 
 `
+
 const ImageContainer3 = styled.div`
   display: flex; 
   width: 100%;
   background: grey;  
 `
+
 const ZenPicture = styled.img`
   object-fit: contain;
   height: 50vw;
@@ -101,7 +107,10 @@ const ZenPicture = styled.img`
 
 const ZenPictureB = styled.img`
   object-fit: contain;
-  width: 45vw;  
+  width: 45vw; 
+  @media(min-width: 1100px) {
+    height: 510px; 
+  } 
 `
 
 const ZenPictureC = styled.img`
