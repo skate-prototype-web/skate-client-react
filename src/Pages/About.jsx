@@ -3,16 +3,7 @@ import styled from 'styled-components';
 import Header from '../Components/organisms/Header'
 import Footer from '../Components/organisms/Footer'
 import logo from '../../src/images/enso_cursive.png'
-
-const AboutContainer = styled.div`
-  width: 100%; 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center;
-  align-items: center; 
-  position: relative;
-  background: rgba(192,192,192,.2)
-`
+import ResponsiveMainContainer from '../Components/atoms/ResponsiveMainContainer' 
 
 const AboutTitle = styled.h1`
   font-family: 'Dosis', sans-serif;
@@ -126,7 +117,7 @@ const About = props => {
   return (
   <>
     <Header/>
-    <AboutContainer>
+    <ResponsiveMainContainer>
       <TopContainer>
         <AboutTitle>What is Zen Skate Co?</AboutTitle>
           <ZenMotto>
@@ -163,7 +154,7 @@ const About = props => {
       <ImageContainer3>
         <ZenPictureC src={'https://zenskate.s3-us-west-2.amazonaws.com/zen_venice_03.jpg'}/>
       </ImageContainer3>
-    </AboutContainer>
+    </ResponsiveMainContainer>
     <Footer/>
   </>
   )

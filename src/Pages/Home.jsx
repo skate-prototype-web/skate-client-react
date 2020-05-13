@@ -5,27 +5,18 @@ import CentralImageDisplay from '../Components/molecules/CentralImageDisplay'
 import Footer from '../Components/organisms/Footer'
 import AboutHomePage from '../Components/molecules/AboutHomePage'
 import ParksHomePage from '../Components/molecules/ParksHomePage'
-
-const HomeContainer = styled.div`
-  width: 100%; 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center;
-  align-items: center; 
-  position: relative;
-  background: rgba(192,192,192,.2);   
-`
+import ResponsiveMainContainer from '../Components/atoms/ResponsiveMainContainer'
 
 const Home = props => {
   const { skateParks } = props
   return (
     <>
       <Header/>
-      <HomeContainer>
+      <ResponsiveMainContainer>
         <CentralImageDisplay/>
         <AboutHomePage/>
         <ParksHomePage skateParks={skateParks}/>
-      </HomeContainer>
+      </ResponsiveMainContainer>
       <Footer/>
     </>
   );

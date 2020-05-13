@@ -188,7 +188,6 @@ class SkateParkPage extends Component {
   }
   
   render () {
-    console.log (this.state, 'state in park page')
     const { name, featuredPark, id, images, mainImage, address, phone, region, website, mainIndex, geolat, geolong } = this.state
     return (
       <>

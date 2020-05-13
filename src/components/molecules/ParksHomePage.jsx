@@ -88,7 +88,6 @@ const StyledLink = styled(Link)`
 
 const ParksHomePage = props => {
   const {skateParks} = props
-  console.log (skateParks, 'skateyskateyparks')
   return (
     <>
       <MainPHPContainer>
