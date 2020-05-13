@@ -4,12 +4,14 @@ import MapMain from '../Components/molecules/MapMain'
 import styled from 'styled-components'
 import AreaParks from '../Components/organisms/parks/AreaParks'
 import Footer from '../Components/organisms/Footer'
+import ResponsiveMainContainer from '../Components/atoms/ResponsiveMainContainer'
 
 const StyledHomeTitle = styled.h1`
   font-weight: 400;
   color: rgb(119, 33, 46); 
   font-family: 'Dosis', sans-serif;
-  margin-left: 3vw; 
+  margin-left: 3vw;
+  text-align: left;  
   font-size: 3vw;
   margin-top: 2vw; 
   margin-bottom: 0;   
@@ -20,10 +22,20 @@ const StyledParksContainer = styled.div`
   display: flex; 
   flex-wrap: wrap;
   flex-direction: column;
-  width: 85%; 
+  width: 100%; 
   margin: auto;
   justify-content: center; 
-  text-align: center; 
+  text-align: center;
+  max-width: 1100px;
+  border: solid green; 
+`
+
+const HeaderDiv = styled.div`
+  width: 100%;
+  max-width: 1100px;
+  display: flex; 
+  justify-content: left;
+  border: solid blue;  
 `
 
 const SkateParkList = props => {
@@ -31,17 +43,21 @@ const SkateParkList = props => {
   return (
     <>
       <Header/>
-      <StyledHomeTitle>Los Angeles Area Parks</StyledHomeTitle>
-      {skateParks && (
-        <StyledParksContainer>
-          <MapMain skateParks={skateParksRaw} />
-          {skateParks.map((region, index) => {
-              return (
-                <AreaParks region={region.name} parks={region.parks} key={index}/>
-              )
-          })}
-        </StyledParksContainer>
-      )}
+      <ResponsiveMainContainer>
+        <HeaderDiv>
+          <StyledHomeTitle>Los Angeles Area Parks</StyledHomeTitle>
+        </HeaderDiv>
+        {skateParks && (
+          <StyledParksContainer>
+            <MapMain skateParks={skateParksRaw} />
+            {skateParks.map((region, index) => {
+                return (
+                  <AreaParks region={region.name} parks={region.parks} key={index}/>
+                )
+            })}
+          </StyledParksContainer>
+        )}
+      </ResponsiveMainContainer>
       <Footer/>
     </>
   )

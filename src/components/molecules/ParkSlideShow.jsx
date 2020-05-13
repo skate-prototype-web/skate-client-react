@@ -63,7 +63,7 @@
     }
 
     useEffect(() => {
-      setTimeout(getNext, 5000)
+      setTimeout(getNext, 3000)
       return function() {
         clearTimeout(getNext)
       }
