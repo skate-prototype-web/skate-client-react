@@ -14,7 +14,12 @@ const StyledHomeTitle = styled.h1`
   text-align: left;  
   font-size: 3vw;
   margin-top: 2vw; 
-  margin-bottom: 0;   
+  margin-bottom: 0;
+  
+  @media(min-width: 1100px) {
+    font-size: 33px; 
+    margin-top: 18px; 
+  }
 `
 
 const StyledParksContainer = styled.div`
@@ -24,7 +29,7 @@ const StyledParksContainer = styled.div`
   flex-direction: column;
   width: 100%; 
   margin: auto;
-  justify-content: center; 
+  justify-content: center;  
   text-align: center;
   max-width: 1100px;
   border: solid green; 
@@ -34,7 +39,7 @@ const HeaderDiv = styled.div`
   width: 100%;
   max-width: 1100px;
   display: flex; 
-  justify-content: left;
+  justify-content: left;  
   border: solid blue;  
 `
 

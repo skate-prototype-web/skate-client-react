@@ -34,6 +34,8 @@
     font-weight: 300;
     @media(min-width: 1100px) {
       font-size: 30px;
+      margin-top: 12px;
+      margin-bottom: 12px;
     } 
   `
 

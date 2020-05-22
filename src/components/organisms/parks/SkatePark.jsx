@@ -49,7 +49,14 @@ const StyledParkName = styled.h3`
   z-index: 2;
   margin-top: .25vw;
   margin-bottom: .25vw;
-  margin-left: .25vw;  
+  margin-left: .25vw;
+  
+  @media(min-width: 1100px) {
+    font-size: 22px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 3px;
+  }
 `
 
 const SkatePark = props => {
