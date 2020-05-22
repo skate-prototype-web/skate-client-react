@@ -12,7 +12,7 @@ const MapContainer = styled.div`
   justify-content: center;
   border: solid rgb(119, 33, 46);
   margin-top: 3vw;
-  width: 100%;
+  width: 90%;
   max-width: 1095px;  
 `
 
@@ -52,7 +52,7 @@ const MapMain = props => {
     latitude: 34.0536909,
     longitude:-118.2427666, 
     zoom: 10,
-    width: '99%',
+    width: '100%',
     height: '50vw'
   }
 
