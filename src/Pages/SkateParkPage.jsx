@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ResponsiveMainContainer from '../Components/atoms/ResponsiveMainContainer'
 import Header from '../Components/organisms/Header'
+import Footer from '../Components/organisms/Footer'
 import SkateSlider from '../Components/molecules/SkateSlider'
 import styled from 'styled-components'
 import regionNames from '../regionNames'
 import MapPark from '../Components/molecules/MapPark'
-import Footer from '../Components/organisms/Footer'
 
 const InformationContainer = styled.div`
   display: grid;
   grid-template-columns: 9fr 3fr;
-  margin-top: .5vw; 
+  margin-top: .5vw;
+  width: 100%; 
+  background: rgba(255, 255, 255, .9);
+  max-width: 1100px;
+  @media(min-width: 1100px) {
+    margin-top:7px;
+  } 
 `
 
 const NameContainer = styled.div`
   display: flex; 
-  flex-direction: column; 
+  flex-direction: column;
 `
 
 const ParkName = styled.h1 `
@@ -25,7 +32,12 @@ const ParkName = styled.h1 `
   font-size: 3.75vw;
   text-align: left;
   margin-left: 3vw; 
-  margin-bottom: 0;  
+  margin-bottom: 1vw;
+  @media(min-width: 1100px) {
+    font-size: 40px;
+    margin-left: 30px;
+    margin-bottom: 10px; 
+  }
 `
 
 const Region = styled.h2 `
@@ -36,7 +48,12 @@ const Region = styled.h2 `
   padding: 0;
   text-align: left;
   margin-top: 1vw; 
-  margin-left: 3vw; 
+  margin-left: 3vw;
+  @media(min-width: 1100px) {
+    font-size: 30px;
+    margin-left: 30px;
+    margin-top: 10px
+  } 
 `
 
 const DetailTitle = styled.h4 `
@@ -46,7 +63,14 @@ const DetailTitle = styled.h4 `
   margin-left: 1vw; 
   margin-top: 1vw; 
   margin-bottom: .25vw; 
-  color: #ffd700; 
+  color: #ffd700;
+  
+  @media(min-width: 1100px) {
+    font-size: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+  }
 `
 
 const Details = styled.p`
@@ -57,11 +81,14 @@ const Details = styled.p`
   margin-top: .25vw; 
   margin-bottom: .25vw; 
   color: white;
-`
 
-// @media (max-width: 900px) {
-//   margin-right: 5vw; 
-// } 
+  @media(min-width: 1100px) {
+    font-size: 18px;
+    margin-left: 15px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+`
 
 const WebLink = styled.a`
   display: inline-block;
@@ -78,33 +105,40 @@ const WebLink = styled.a`
     color: #ffd700;
     font-weight: 700; 
   }
-`
 
-// const MainContainer = styled.div`
-//   width: 100%; 
-//   height: auto;
-//   display: grid;
-//   grid-template-columns: 9fr 3fr;
-// `
+  @media(min-width: 1100px) {
+    font-size: 18px;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    margin-left: 13px;
+  }
+`
 
 const ImagesContainer = styled.div`
   width: 100%; 
   height: auto;
   display: grid;
+  max-width: 1100px;
   grid-template-columns: 9fr 3fr;
   justify-content: center; 
 `
 
 const MainImageContainer = styled.div`
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
 
 `
 
 const MainParkImage = styled.img` 
-  width: 70vw;
+  width: 100%;
   height: 45vw;
   object-fit: fill  ;
   border: solid #A9A9A9;
-  margin-left: 3vw; 
+  border-radius: 1%;
+  @media(min-width: 1100px) {
+    height: 475px;
+  }
 `
 
 const OuterSliderContainer = styled.div`
@@ -192,43 +226,46 @@ class SkateParkPage extends Component {
     return (
       <>
         <Header/>
+          <ResponsiveMainContainer>
+            {featuredPark !== undefined && (
+              <InformationContainer>
+                <NameContainer>
+                  <ParkName>{featuredPark.name}</ParkName>
+                  <Region>{regionNames[region]} region</Region>
+                </NameContainer>
+                <DetailsContainer>
+                  <div>
+                    <DetailTitle>Address</DetailTitle>
+                    <Details>{address.street}</Details>
+                    <Details>{address.city}, {address.state} {address.zip}</Details>
+                  </div>
+                  <div>
+                    <DetailTitle>Phone</DetailTitle>
+                    <Details>{phone}</Details>
+                  </div>
+                  <div>
+                    <WebLink href={website}>website</WebLink>
+                  </div>
+                </DetailsContainer>
+              </InformationContainer>
+            )}
           {featuredPark !== undefined && (
-            <InformationContainer>
-              <NameContainer>
-                <ParkName>{featuredPark.name}</ParkName>
-                <Region>{regionNames[region]} region</Region>
-              </NameContainer>
-              <DetailsContainer>
-                <div>
-                  <DetailTitle>Address</DetailTitle>
-                  <Details>{address.street}</Details>
-                  <Details>{address.city}, {address.state} {address.zip}</Details>
-                </div>
-                <div>
-                  <DetailTitle>Phone</DetailTitle>
-                  <Details>{phone}</Details>
-                </div>
-                <div>
-                  <WebLink href={website}>website</WebLink>
-                </div>
-              </DetailsContainer>
-            </InformationContainer>
+            <ImagesContainer>
+              <MainImageContainer>
+                <MainParkImage src={mainImage}/>
+              </MainImageContainer>
+              <OuterSliderContainer>
+                <SkateSlider parkImages={images} changeImage={this.changeImage} mainIndex={mainIndex}/>
+              </OuterSliderContainer>
+            </ImagesContainer>
           )}
-        {featuredPark !== undefined && (
-          <ImagesContainer>
-            <MainImageContainer>
-              <MainParkImage src={mainImage}/>
-            </MainImageContainer>
-            <OuterSliderContainer>
-              <SkateSlider parkImages={images} changeImage={this.changeImage} mainIndex={mainIndex}/>
-            </OuterSliderContainer>
-          </ImagesContainer>
-        )}
-        {featuredPark !== undefined && (
-          <MapContainer>
-            <MapPark id={id} name={name} address={address} geolat={geolat} geolong={geolong}/>
-          </MapContainer>
-        )}
+          {featuredPark !== undefined && (
+            <MapContainer>
+              <MapPark id={id} name={name} address={address} geolat={geolat} geolong={geolong}/>
+            </MapContainer>
+          )}
+          </ResponsiveMainContainer>
+        <Footer/>
       </>
     )
   }
