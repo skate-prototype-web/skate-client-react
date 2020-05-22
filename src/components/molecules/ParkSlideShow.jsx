@@ -21,12 +21,10 @@
     width: 100%;
     height: 100%;
   `
-
   const OuterContainer = styled.div`
     display: flex; 
     flex-direction: column;
   `
-  
   const ParkName = styled.h3 `
     text-align: center; 
     font-family: 'Dosis', sans-serif; 
@@ -35,7 +33,7 @@
     font-size: 2.5vw; 
     font-weight: 300;
     @media(min-width: 1100px) {
-      font-size: 28px;
+      font-size: 30px;
     } 
   `
 
@@ -63,7 +61,7 @@
     }
 
     useEffect(() => {
-      setTimeout(getNext, 3000)
+      setTimeout(getNext, 5000)
       return function() {
         clearTimeout(getNext)
       }
