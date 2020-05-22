@@ -6,12 +6,21 @@ import regionNames from '../../regionNames'
 
 
 const MapContainer = styled.div`
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: solid rgb(119, 33, 46);
-  margin-top: 3vw; 
+  margin-top: 3vw;
+  width: 90%;
+  max-width: 1095px;  
 `
 
 const PopupContainer = styled.div`
-  width: 300px;  
+  width: 300px;
+  @media(max-width: 450px) {
+    width: 250px; 
+  }  
 `
 
 const PopupImage = styled.img `
@@ -43,7 +52,7 @@ const MapMain = props => {
     latitude: 34.0536909,
     longitude:-118.2427666, 
     zoom: 10,
-    width: '85vw',
+    width: '100%',
     height: '50vw'
   }
 

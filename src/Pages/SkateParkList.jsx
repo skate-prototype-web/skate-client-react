@@ -14,7 +14,12 @@ const StyledHomeTitle = styled.h1`
   text-align: left;  
   font-size: 3vw;
   margin-top: 2vw; 
-  margin-bottom: 0;   
+  margin-bottom: 0;
+  
+  @media(min-width: 1100px) {
+    font-size: 33px; 
+    margin-top: 18px; 
+  }
 `
 
 const StyledParksContainer = styled.div`
@@ -24,10 +29,9 @@ const StyledParksContainer = styled.div`
   flex-direction: column;
   width: 100%; 
   margin: auto;
-  justify-content: center; 
+  justify-content: center;  
   text-align: center;
-  max-width: 1100px;
-  border: solid green; 
+  max-width: 1100px; 
 `
 
 const HeaderDiv = styled.div`
@@ -35,7 +39,15 @@ const HeaderDiv = styled.div`
   max-width: 1100px;
   display: flex; 
   justify-content: left;
-  border: solid blue;  
+  background: rgba(255, 255, 255, .9);   
+`
+
+const MapContainer = styled.div`
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const SkateParkList = props => {
@@ -49,7 +61,9 @@ const SkateParkList = props => {
         </HeaderDiv>
         {skateParks && (
           <StyledParksContainer>
-            <MapMain skateParks={skateParksRaw} />
+            <MapContainer>
+              <MapMain skateParks={skateParksRaw} />
+            </MapContainer>
             {skateParks.map((region, index) => {
                 return (
                   <AreaParks region={region.name} parks={region.parks} key={index}/>

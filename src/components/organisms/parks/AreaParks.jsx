@@ -19,7 +19,12 @@ const StyledRegionName = styled.h3`
   font-weight: 400; 
   font-size: 2.5vw; 
   text-align: left;
-  margin-left: 1.5vw;  
+  margin-left: 1.5vw; 
+  
+  @media(min-width: 1100px) {
+    font-size: 28px;
+    margin-left: 15px;
+  }
 `
 
 const AreaParks = props => {
