@@ -77,7 +77,6 @@ const ImageContainer3 = styled.div`
   width: 100%;
   background: grey;
   max-width: 1100px;
-  image-fit: contain;   
 `
 
 const ZenPicture = styled.img`
@@ -90,7 +89,7 @@ const ZenPicture = styled.img`
 
 const ZenPictureC = styled.img`
   width: 100%;
-  height: auto; 
+  image-fit: contain;  
 `
 
 const AboutZenContainer = styled.div`

@@ -10,10 +10,10 @@ import MapPark from '../Components/molecules/MapPark'
 
 const InformationContainer = styled.div`
   display: grid;
-  grid-template-columns: 9fr 3fr;
+  grid-template-columns: 8fr 4fr;
+  background: rgb(220,220,220);
   margin-top: .5vw;
   width: 100%; 
-  background: rgba(255, 255, 255, .9);
   max-width: 1100px;
   @media(min-width: 1100px) {
     margin-top:7px;
@@ -63,7 +63,7 @@ const DetailTitle = styled.h4 `
   margin-left: 1vw; 
   margin-top: 1vw; 
   margin-bottom: .25vw; 
-  color: #ffd700;
+  color: rgb(119, 33, 46);
   
   @media(min-width: 1100px) {
     font-size: 20px;
@@ -80,7 +80,7 @@ const Details = styled.p`
   margin-left: 1.5vw; 
   margin-top: .25vw; 
   margin-bottom: .25vw; 
-  color: white;
+  color: black;
 
   @media(min-width: 1100px) {
     font-size: 18px;
@@ -96,14 +96,14 @@ const WebLink = styled.a`
   margin-left: 1.25vw; 
   margin-top: 1.5vw; 
   margin-bottom: 1vw; 
-  color: white;
+  color: black;
   font-weight: 500; 
   font-size: 1.75vw;
 
   &:hover{
     cursor: pointer; 
-    color: #ffd700;
-    font-weight: 700; 
+    color: rgb(119, 33, 46);
+    font-weight: 400; 
   }
 
   @media(min-width: 1100px) {
@@ -119,8 +119,13 @@ const ImagesContainer = styled.div`
   height: auto;
   display: grid;
   max-width: 1100px;
+  padding-top: 5vw; 
   grid-template-columns: 9fr 3fr;
-  justify-content: center; 
+  justify-content: center;
+  background: rgba(255, 255, 255, .9);
+  @media(min-width: 1100px) {
+    padding-top: 50px; 
+  }
 `
 
 const MainImageContainer = styled.div`
@@ -131,7 +136,7 @@ const MainImageContainer = styled.div`
 `
 
 const MainParkImage = styled.img` 
-  width: 100%;
+  width: 85%;
   height: 45vw;
   object-fit: fill  ;
   border: solid #A9A9A9;
@@ -148,15 +153,27 @@ const OuterSliderContainer = styled.div`
 `
 
 const DetailsContainer = styled.div`
-  background: rgba(119, 33, 46, .7);
   display: flex; 
   flex-direction: column;
-  border: solid 2px #ffd700;    
+  text-align: right;
+  margin-right: 5vw;
+  @media(min-width: 1100px) {
+    margin-right: 50px; 
+  }     
 `
 
 const MapContainer = styled.div`
   display: flex;
-  justify-content: center; 
+  justify-content: center;
+  align-items: center; 
+  background: rgba(255, 255, 255, .9);
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 5vw; 
+  height: 65vw;
+  @media(min-width: 1100px){
+    height: 680px; 
+  }
 `
 
 class SkateParkPage extends Component {

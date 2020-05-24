@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
 const SliderContainer = styled.div `
-  overflow: hidden;
+  overflow: hidden; 
 `
 
 const StyledSlider = styled(Slider)`
@@ -23,13 +23,21 @@ const InnerStyledSlider = styled.div`
 const StyledSliderAlt = styled.div`
   display: grid;
   grid-template-rows: 1fr 10fr 1fr;
-  height: 45vw;  
+  height: 45vw;
+
+  @media(min-width: 1100px) {
+    height: 470px; 
+  } 
 `
 
 const ArrowContainer = styled.div`
   font-size: 2vw;
   justify-content: center;
   display: flex;
+
+  @media(min-width: 1100px) {
+    font-size: 20px; 
+  }
 `
 
 const ParkImage = styled.img`
@@ -43,6 +51,11 @@ const ParkImage = styled.img`
   &:hover {
     cursor: pointer; 
   }
+
+  @media(min-width: 1100px) {
+    height: 110px;
+    width: 130px;
+  }
 `
 
 const InnerImageContainer = styled.div `
@@ -53,7 +66,11 @@ const InnerImageContainer = styled.div `
   margin: auto;
   display: flex;
   align-items: center; 
-  justify-content: center
+  justify-content: center;
+
+  @media(min-width: 1100px) {
+    width: 136px;
+  }
 `
 
 const OuterImageContainer = styled.div`  
@@ -71,7 +88,11 @@ const InnerImageContainerAlt = styled.div `
   margin: auto;
   display: flex;
   align-items: flex-start; 
-  justify-content: center
+  justify-content: center;
+
+  @media(min-width: 1100px) {
+    width: 136px;
+  }
 `
 
 const OuterImageContainerAlt = styled.div`  
@@ -80,7 +101,12 @@ const OuterImageContainerAlt = styled.div`
   justify-content: center;
   align-items: flex-start;
   margin-top: 1vw; 
-  margin-bottom: 1vw;  
+  margin-bottom: 1vw;
+  
+  @media(min-width: 1100px) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 `
 
 const SliderDownArrow = props => {
