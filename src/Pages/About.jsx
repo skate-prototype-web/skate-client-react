@@ -72,12 +72,20 @@ const ImageContainer = styled.div`
   }
 `
 
-const ImageContainer3 = styled.div`
+const OuterBottomPictureContainer = styled.div`
   display: flex; 
   width: 100%;
   background: grey;
   max-width: 1100px;
 `
+
+const InnerBottomPictureContainer = styled.div `
+  display: flex; 
+  width: 100%;
+  background: grey;
+  max-width: 1100px;
+`
+
 
 const ZenPicture = styled.img`
   object-fit: contain;
@@ -150,9 +158,11 @@ const About = props => {
           <ZenPicture height={'45vw'} maxHeight={'510px'} src={logo}/>
         </ImageContainer>
       </Container>
-      <ImageContainer3>
+      <OuterBottomPictureContainer>
+        <InnerBottomPictureContainer>
         <ZenPictureC src={'https://zenskate.s3-us-west-2.amazonaws.com/zen_venice_03.jpg'}/>
-      </ImageContainer3>
+        </InnerBottomPictureContainer>
+      </OuterBottomPictureContainer>
     </ResponsiveMainContainer>
     <Footer/>
   </>
