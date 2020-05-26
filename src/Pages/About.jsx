@@ -75,17 +75,18 @@ const ImageContainer = styled.div`
 const OuterBottomPictureContainer = styled.div`
   display: flex; 
   width: 100%;
-  background: grey;
+  background: rgba(0, 0, 0, .2);
   max-width: 1100px;
 `
 
 const InnerBottomPictureContainer = styled.div `
   display: flex; 
-  width: 100%;
-  background: grey;
+  align-items: center; 
+  justify-content: center; 
+  width: 100%; 
   max-width: 1100px;
+  border: solid .25px rgba(0, 0, 0, .3); 
 `
-
 
 const ZenPicture = styled.img`
   object-fit: contain;
@@ -96,6 +97,7 @@ const ZenPicture = styled.img`
 `
 
 const ZenPictureC = styled.img`
+  border: solid .5px white;  
   width: 100%;
   image-fit: contain;  
 `
