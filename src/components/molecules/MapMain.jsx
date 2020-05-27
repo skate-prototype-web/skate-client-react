@@ -13,7 +13,12 @@ const MapContainer = styled.div`
   border: solid rgb(119, 33, 46);
   margin-top: 3vw;
   width: 90%;
-  max-width: 1095px;  
+  max-width: 1095px;
+  @media(min-width: 1100px) {
+    margin-top: 30px;
+    width: 995px;
+    height: 520px;
+  }  
 `
 
 const PopupContainer = styled.div`
@@ -53,7 +58,7 @@ const MapMain = props => {
     longitude:-118.2427666, 
     zoom: 10,
     width: '100%',
-    height: '50vw'
+    height: '100%'
   }
 
   const [viewport, setViewport] = useState(viewIt)

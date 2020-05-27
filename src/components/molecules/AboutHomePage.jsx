@@ -13,7 +13,7 @@ const MainAHPContainer = styled.div`
   @media(min-width: 1100px) {
     height: 500px;
     border-radius: 8px;
-    margin-bottom: 5px;    
+    margin-bottom: 5px;   
   }
 `
 
@@ -31,7 +31,8 @@ const AboutHomeImageContainer = styled.div`
   justify-content: center;
   @media(min-width: 1100px) {
     width: 550px; 
-    height: 380px; 
+    height: 380px;
+    margin-left: 30px;
   } 
 `
 
@@ -40,6 +41,9 @@ const AboutImage = styled.img`
   height: 94%;
   padding: 1vw;
   object-fit: cover;
+  @media(min-width: 1100px) {
+    padding: 10px; 
+  }
 `
 
 const AboutTitle = styled.h2`
@@ -53,7 +57,11 @@ const AboutTitle = styled.h2`
   text-align: left;
 
   @media(min-width: 1100px) {
-    font-size: 34px; 
+    font-size: 34px;
+    margin-left: 20px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+
   }  
 `
 
@@ -73,7 +81,10 @@ const AboutHomeText = styled.p`
   margin-right: 1vw;
   margin-top: 1vw;
   @media(min-width: 1100px) {
-    font-size: 25px; 
+    font-size: 25px;
+    margin-top: 10px; 
+    margin-right: 10px; 
+    margin-left: 20px; 
   } 
 `
 
@@ -86,7 +97,11 @@ const AboutTextMainContainer = styled.div`
 const TopTextContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 7vw; 
+  margin-top: 7vw;
+
+  @media(min-width: 1100px) {
+    margin-top: 70px;
+  } 
 `
 
 const BottomLinkContainer = styled.div`
@@ -116,7 +131,7 @@ const StyledLink = styled(Link)`
   font-family: 'Dosis', sans-serif;
   font-weight: 400;
   font-size: 3vw;
-  text  -align: center;
+  text-align: center;
   
   &:hover {
     color: rgba(119, 33, 46, .6);

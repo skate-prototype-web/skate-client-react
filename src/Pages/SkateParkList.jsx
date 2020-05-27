@@ -18,7 +18,8 @@ const StyledHomeTitle = styled.h1`
   
   @media(min-width: 1100px) {
     font-size: 33px; 
-    margin-top: 18px; 
+    margin-top: 20px;
+    margin-left: 30px; 
   }
 `
 
