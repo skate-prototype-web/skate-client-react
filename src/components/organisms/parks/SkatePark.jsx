@@ -5,7 +5,10 @@ import { Link } from '@reach/router'
 const StyledParkContainer = styled.div`
   width: 91%;
   height: auto;
-  margin-bottom: 2vw;  
+  margin-bottom: 2vw;
+  @media(min-width: 1100px) {
+    margin-bottom: 20px; 
+  }   
 `
 
 const StyledImageContainer = styled.div`
@@ -22,6 +25,11 @@ const StyledImageContainer = styled.div`
   &:hover {
     border: .20vw solid #ffd700;
     cursor: pointer; 
+  }
+
+  @media(min-width: 1100px) {
+    height: 280px;
+    border: 1px solid rgba(119, 33, 46, .8);
   }
 `
 

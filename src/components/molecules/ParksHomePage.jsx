@@ -34,11 +34,19 @@ const LargeSlideContainer = styled.div`
   display: flex;
   align-itmes: center;
   justify-content: center;
+
+  @media(min-width: 1100px) {
+    height: 390px; 
+  } 
 `
 
 const CopyContainer = styled.div`
   margin-top: 7vw; 
-  margin-left: 3vw; 
+  margin-left: 3vw;
+  @media(min-width: 1100px) {
+    margin-top: 55px;
+    margin-left: 30px;
+  } 
 `
 
 const HomeParkCopy = styled.p`
@@ -62,6 +70,9 @@ const Title = styled.h2`
   margin-bottom: 2vw;
   @media(min-width: 1100px) {
     font-size: 34px;
+    margin-right: 20px; 
+    margin-top: 30px;
+    margin-bottom: 20px;  
   }  
 `
 
