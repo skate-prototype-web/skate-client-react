@@ -3,6 +3,7 @@ import { Router } from '@reach/router'
 import axios from 'axios'
 import Home from '../Pages/Home'
 import About from '../Pages/About'
+import Merch from '../Pages/Merch'
 import SkateParkList from '../Pages/SkateParkList'
 import SkateParkPage from '../Pages/SkateParkPage'
 import SkateParks from './SkateParks'
@@ -46,6 +47,7 @@ class MainRouter extends Component {
         <Router>
           <Home path="/" skateParks={skateParksRaw}/>
           <About path="/about"/>
+          <Merch path="/merch"/>
           <SkateParks path="skateparks" skateParks={skateParksMapped} skateParksRaw={skateParksRaw}>
             <SkateParkPage path="/:id" skateParksRaw={skateParksRaw}/>
           </SkateParks>
